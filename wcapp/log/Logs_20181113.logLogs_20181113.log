@@ -1,0 +1,59 @@
+ ----------------------header-------------------------- 2018-11-13 16:55:48,185 [7] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-13 16:55:48,331 [7] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-13 16:56:11,454 [11] INFO  log4netlogger - GET http://localhost:9991/User
+2018-11-13 16:56:20,646 [12] INFO  log4netlogger - POST http://localhost:9991/User/SuccessExcel
+2018-11-13 16:56:20,858 [9] ERROR log4netlogger -    在 WCAPP.Libs.UserExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\UserExcel.cs:行号 78
+   在 WCAPP.Controllers.UserController.SuccessExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\UserController.cs:行号 343
+2018-11-13 16:56:29,282 [8] INFO  log4netlogger - POST http://localhost:9991/User/SuccessExcel
+2018-11-13 16:56:29,350 [8] ERROR log4netlogger -    在 WCAPP.Libs.UserExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\UserExcel.cs:行号 78
+   在 WCAPP.Controllers.UserController.SuccessExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\UserController.cs:行号 343
+2018-11-13 16:56:32,730 [11] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-13 16:56:34,160 [15] INFO  log4netlogger - GET http://localhost:9991/Process/ReviseIndex?pageSize=10
+2018-11-13 16:56:35,274 [12] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 16:56:44,493 [11] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 16:56:44,598 [13] ERROR log4netlogger -    在 WCAPP.Utils.Common.GetDbEnum[T](Object cell) 位置 D:\liyang\wcapp\WCAPP\Utils\Common.cs:行号 231
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 119
+2018-11-13 16:56:44,632 [13] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-13 16:58:05,157 [13] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-13 16:58:09,668 [10] INFO  log4netlogger - GET http://localhost:9991/Process/ImportProcesses?processIdes=33,34,35,27,39,48,45,46
+2018-11-13 16:58:15,185 [5] INFO  log4netlogger - POST http://localhost:9991/Process/CheckMessage
+2018-11-13 16:59:00,919 [12] INFO  log4netlogger - POST http://localhost:9991/Process/CheckMessage
+2018-11-13 16:59:02,286 [11] INFO  log4netlogger - GET http://localhost:9991/Process/checkM?newList=工艺规程编号:1234567890零件号:123.433,工艺规程编号:13B-2J-1321零件号:1300029,工艺规程编号:13B-2J-1331零件号:1300029,工艺规程编号:13B-2J-13212零件号:1300029,工艺规程编号:113B-2J-1321231零件号:1300029,工艺规程编号:113B-2J-1321232零件号:1300029,工艺规程编号:113B-2J-1321233零件号:1300029,工艺规程编号:113B-2J-1321234零件号:1300029,工艺规程编号:113B-2J-1321235零件号:1300029,工艺规程编号:3123零件号:312
+2018-11-13 17:08:59,303 [33] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-13 17:08:59,328 [55] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-13 17:09:02,279 [53] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:09:04,877 [45] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:10:11,943 [55] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:10:18,603 [33] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:10:22,563 [62] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:10:32,198 [33] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:10:34,174 [49] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:10:47,583 [62] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:10:49,221 [63] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:10:50,967 [61] INFO  log4netlogger - GET http://localhost:9991/User
+2018-11-13 17:10:58,097 [33] INFO  log4netlogger - POST http://localhost:9991/User/SuccessExcel
+2018-11-13 17:10:58,165 [33] ERROR log4netlogger -    在 WCAPP.Libs.UserExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\UserExcel.cs:行号 78
+   在 WCAPP.Controllers.UserController.SuccessExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\UserController.cs:行号 343
+2018-11-13 17:11:05,214 [49] INFO  log4netlogger - POST http://localhost:9991/User/SuccessExcel
+2018-11-13 17:11:05,283 [49] ERROR log4netlogger -    在 WCAPP.Libs.UserExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\UserExcel.cs:行号 78
+   在 WCAPP.Controllers.UserController.SuccessExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\UserController.cs:行号 343
+2018-11-13 17:11:17,664 [56] INFO  log4netlogger - GET http://localhost:9991/Sync
+2018-11-13 17:11:34,245 [53] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:11:34,295 [53] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 73
+2018-11-13 17:11:34,330 [53] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-13 17:11:40,553 [63] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:11:40,591 [63] ERROR log4netlogger -    在 WCAPP.Utils.Common.GetDbEnum[T](Object cell) 位置 D:\liyang\wcapp\WCAPP\Utils\Common.cs:行号 231
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 119
+2018-11-13 17:11:40,624 [63] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-13 17:11:56,561 [46] INFO  log4netlogger - POST http://localhost:9991/Sync/ImportExcel
+2018-11-13 17:11:56,604 [46] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 73
+2018-11-13 17:11:56,640 [46] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+ ----------------------footer-------------------------- 

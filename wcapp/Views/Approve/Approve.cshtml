@@ -1,0 +1,118 @@
+﻿@using WCAPP.Models.Database
+@model WCAPP.Models.ApproveModels.ApproveModel
+@{
+    Approve appr = ViewBag.Approve;
+    var process = appr.Process;
+}
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">审核</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content">
+                    <div class="row" style="padding: 20px 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            工艺规程编号：@process.No
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            零件号：@process.PartNo
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0px 60px 20px;">
+                        <div class="col-md-4 col-xs-6">
+                            零件名称：@process.PartName
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab3" data-toggle="tab">审核意见</a>
+            </li>
+            <li>
+                <a style="font-size: 16px" href="#tab2" data-toggle="tab">工序信息</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="tab2">
+                <div class="content">
+                    <table class="table table-striped table-hover text-center">
+                        <thead>
+                        <tr>
+                            <th class="text-center">工序号</th>
+                            <th class="text-center">工序名称</th>
+                            <th class="text-center">焊接方法</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            if (process != null && process.Procedures != null)
+                            {
+                                foreach (var pro in process.Procedures)
+                                {
+                                    <tr>
+                                        <td>@Html.ActionLink(pro.No, "Creating", "Procedure", new {id = pro.Id}, null)</td>
+                                        <td>@pro.Name</td>
+                                        <td>@pro.WeldMethod</td>
+                                    </tr>
+                                }
+                            }
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane active" id="tab3">
+                <div class="content">
+                    @using (Ajax.BeginForm("Approve",new {appr.Id}, new AjaxOptions {OnSuccess = "onApprove"}))
+                    {
+                        <div style="padding: 20px;">
+                            <div style="text-align: center">
+                                <textarea style="max-width: 1080px;" rows="10" cols="880" name="Note"></textarea>
+                            </div>
+
+                            <div style="padding: 20px">
+                                <input name="Agree" id="pass" type="radio" value="true">
+                                <label for="pass">
+                                    通过
+                                </label>
+
+                                <input style="margin-left: 40px" name="Agree" id="not" type="radio" value="false">
+                                <label for="not">
+                                    不通过
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="提交" class="btn btn-primary">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function onApprove(data) {
+            if (data.succeed) {
+                alert("提交成功");
+            } else if (data.error) {
+                alert(data.error);
+            }
+            location.href="@Url.Action("Waiting")";
+        }
+    </script>
+}

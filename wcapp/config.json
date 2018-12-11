@@ -1,0 +1,6 @@
+{
+  "AutomaticMigrationsEnabled": true,
+  "AutomaticMigrationDataLossAllowed": true,
+  "DeviceNet": true,
+  "Excel32": false
+}

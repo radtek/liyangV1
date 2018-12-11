@@ -1,0 +1,238 @@
+﻿<div class="shade" id="shade" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #7B7B7B; -khtml-opacity: 0.6; -moz-opacity: 0.6; filter: alpha(opacity=60); filter: 'alpha(opacity=60)'; opacity: 0.6; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70); display: none; z-index: 101;">
+</div>
+@using WCAPP.Models.Database
+@{ IQueryable<Process> history = ViewBag.HistoryProcesses; }
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">创建中规程信息</a>
+            </li>
+
+        </ul>
+
+        @if (ViewBag.Process != null)
+    {
+        var process = (Process)ViewBag.Process;
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content">
+                    <div class="row" style="padding: 20px 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            工艺规程编号：@process.No
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            审核状态：<a href="#" onclick="DisPlayApprovalState(@process.Id)">@(process.ApprovalState)</a>
+                            @*审核状态：@process.ApprovalState*@
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            版本：@process.VersionString
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            零件号：@process.PartNo
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            零件名称：@process.PartName
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            编制者：@process.Author
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-center">工序号</th>
+                                <th class="text-center">工序名称</th>
+                                <th class="text-center">焊接方法</th>
+                                <th class="text-center">焊接类型</th>
+                                @if (ViewBag.Editable)
+                            {
+                                <th class="text-center"> </th>
+                        }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                            if (process.Procedures != null)
+                            {
+                                foreach (var proc in process.Procedures)
+                                {
+                                    <tr>
+                                        <td class="t">@Html.ActionLink(proc.No, "Creating", "Procedure", new { id = proc.Id }, null)</td>
+                                        <td>@proc.Name</td>
+                                        <td>@proc.WeldMethod</td>
+                                        <td>@proc.WeldType</td>
+                                        @if (ViewBag.Editable)
+                                    {
+                                        <td>
+                                            <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-danger" onclick="delProcedure('@proc.No')">删除</button>
+                                        </td>
+                                }
+                                    </tr>
+                            }
+                        }
+                            }
+
+                        </tbody>
+                    </table>
+
+                    @if (history.Any())
+                {
+                    <h3>查看历史版本</h3>
+                    <ul>
+                        @foreach (var p in history)
+                    {
+                        <li>@Html.ActionLink(p.VersionString, "Detail", new { p.Id })</li>
+                }
+                    </ul>
+            }
+                </div>
+            </div>
+        </div>
+
+    if (ViewBag.BackEdit)
+    {
+        <div class="text-center">
+            <a class="btn btn-primary" onclick="back()">返回上一级</a>            
+        </div>
+}
+if (ViewBag.Editable)
+{
+    <div class="text-center">
+        <a class="btn btn-primary" onclick="back()">返回上一级</a>
+        <a class="btn btn-primary" onclick='$("#add-procedure").dialog({ width: "500px", modal: true });'>添加工序</a>
+        <a class="btn btn-info" onclick='$("#submit-approve").dialog({ width: "500px", modal: true });'>提交审核</a>
+    </div>
+
+    <div id="add-procedure" title="请填写工序信息" style="display: none">
+        @using (Ajax.BeginForm("AddProcedure", new { pid = process.Id }, new AjaxOptions { UpdateTargetId = "add_procedure", OnSuccess = "onSimple" }, new { id = "add_procedure" }))
+    {
+        @Html.Action("AddProcedure")
+}
+    </div>
+
+    <div id="submit-approve" title="请选择审核人" style="display: none">
+        @using (Ajax.BeginForm("Submit", "Approve", new { pid = process.Id }, new AjaxOptions { UpdateTargetId = "submit_approve", OnSuccess = "onSimple" }, new { id = "submit_approve" }))
+    {
+        @Html.Action("Submit", "Approve")
+}
+    </div>
+    <div id="del-procedure" style="display: none">
+        <div style="margin: 20px; font-size: 15px;">
+            <label><input id="check-box" type="checkbox">确定删除</label>
+        </div>
+        <div class="text-center">
+            <div style="display: inline-block">
+                @using (Ajax.BeginForm("DeleteProcedure", new { id = process.Id }, new AjaxOptions { OnSuccess = "onSimple" }))
+            {
+                <input id="del-prid" type="hidden" name="proNo" value="10" />
+                <input id="confirmDel" disabled="disabled" class="disabled btn btn-primary" type="submit" value="确认删除" />
+        }
+            </div>
+            <button class="btn btn-info" onclick="$('#del-procedure').dialog('close')">取消</button>
+        </div>
+    </div>
+}
+}
+else
+{
+    @*<p>没有指定ID的创建中工艺规程</p>*@
+    <div title="审核状态" style="text-align: center; padding: 20px ;">
+        <table class="table table-striped table-hover text-center">
+            <thead>
+                <tr>
+                    <th class="text-center">编制者不是创建者，不能进行编辑！</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+}
+
+    </div>
+</div>
+<div id="box" title="审核状态" style="text-align: center; padding: 20px ;display: none">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">校对人</th>
+                <td>
+                    <a id="links" style="color: blue"></a>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">审核人</th>
+                <td>
+                    <a id="link" style="color: blue "></a>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">审核状态</th>
+                <td>
+                    正在等待<a id="linkPeople" style="color: blue "></a>审核
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div id="boxs" title="审核状态" style="text-align: center; padding: 20px ;display: none">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">请先提交审核！</th>                
+            </tr>           
+        </thead>
+    </table>
+</div>
+@section scripts {
+<script>
+        function delProcedure(no) {
+            $("#check-box")[0].checked = false;
+            $("#confirmDel").addClass("disabled");
+            $("#del-procedure").dialog({ width: "300px", modal: true });
+            $("#del-prid").val(no);
+        }
+
+
+            $("#check-box").change(function() {
+                var dis = $("#confirmDel");
+                if (this.checked) {
+                    dis.removeClass("disabled");
+                    dis.removeAttr("disabled");
+                } else {
+                    dis.addClass("disabled");
+                    dis.attr("disabled", "disabled");
+                }
+            });
+      function DisPlayApprovalState(id) {
+                $.ajax({
+                    url: "@Url.Action("DisPlayApprovalState")",
+                    type: "post",
+                    data: { id: id },
+                    error: function() {},
+                    success: function (data) {
+                        if (data.succeed) {
+                            $("#link")[0].innerText = data.approverName;
+                            $("#links")[0].innerText = data.prooferName;
+                            $("#linkPeople")[0].innerText = data.currenterName;
+                            $("#box").dialog({ width: "300px", modal: true });
+                        } else {
+                            $("#boxs").dialog({ width: "200px", modal: true });
+                        }
+
+                    }
+                });
+            }
+        function ShowApprovalState() {
+            $("#ShowApprovalState").dialog({ width: "300px" });
+            }
+
+     function back() {
+            window.location.href = "@Url.Action("Index","Process")";
+        }
+
+</script>
+}

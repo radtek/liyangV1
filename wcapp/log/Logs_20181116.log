@@ -1,0 +1,65 @@
+ ----------------------header-------------------------- 2018-11-16 15:10:48,799 [123] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-16 15:11:11,348 [137] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-16 15:11:14,877 [145] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 15:11:17,087 [177] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:12:09,281 [177] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 15:12:15,250 [123] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-16 15:12:17,542 [145] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:13:29,709 [137] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:21:51,289 [156] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 15:21:57,529 [154] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-16 15:22:00,398 [180] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:24:22,461 [142] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-16 15:24:33,173 [177] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-16 15:24:35,985 [95] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 15:24:39,950 [10] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-16 15:24:51,924 [163] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-16 15:24:54,489 [138] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/59
+2018-11-16 15:24:58,747 [137] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:25:20,324 [10] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-16 15:25:26,633 [95] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-16 15:25:28,848 [25] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/59
+2018-11-16 15:25:33,528 [154] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-16 15:25:36,035 [138] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 15:25:37,920 [125] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 15:28:04,047 [125] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-16 15:28:04,217 [10] INFO  log4netlogger - GET http://localhost:54938/Process
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-16 16:59:49,973 [45] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-16 16:59:59,415 [119] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-16 17:00:02,158 [79] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 17:00:14,201 [40] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-16 17:00:19,315 [45] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/58
+2018-11-16 17:00:22,492 [119] INFO  log4netlogger - POST http://localhost:54938/Procedure/StartTest?sid=71
+2018-11-16 17:00:22,743 [40] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Detail/58
+2018-11-16 17:00:22,773 [54] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/58
+2018-11-16 17:00:44,731 [54] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-16 17:00:46,377 [119] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Detail/58
+2018-11-16 17:00:46,400 [50] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/58
+2018-11-16 17:00:47,868 [87] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-16 17:00:49,379 [119] INFO  log4netlogger - POST http://localhost:54938/Process/Publish/49
+2018-11-16 17:00:49,479 [40] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Process/Detail/49
+2018-11-16 17:00:49,508 [45] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-16 17:00:52,786 [87] INFO  log4netlogger - GET http://localhost:54938/Process/GetPdf/49
+2018-11-16 17:14:18,377 [67] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-16 17:14:18,404 [198] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-16 17:14:19,353 [87] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/base.css
+2018-11-16 17:14:19,354 [45] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/theme.css
+2018-11-16 17:14:19,389 [92] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/core.css
+2018-11-16 17:14:19,389 [146] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/accordion.css
+2018-11-16 17:14:19,390 [85] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/autocomplete.css
+2018-11-16 17:14:19,390 [178] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/button.css
+2018-11-16 17:14:19,391 [27] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/dialog.css
+2018-11-16 17:14:19,391 [40] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/datepicker.css
+2018-11-16 17:14:19,395 [54] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/draggable.css
+2018-11-16 17:14:19,398 [129] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectable.css
+2018-11-16 17:14:19,399 [85] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/menu.css
+2018-11-16 17:14:19,399 [27] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/resizable.css
+2018-11-16 17:14:19,399 [119] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/progressbar.css
+2018-11-16 17:14:19,400 [59] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectmenu.css
+2018-11-16 17:14:19,404 [19] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/sortable.css
+2018-11-16 17:14:19,405 [198] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/spinner.css
+2018-11-16 17:14:19,405 [73] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/slider.css
+2018-11-16 17:14:19,406 [129] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tabs.css
+2018-11-16 17:14:19,407 [85] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tooltip.css
+2018-11-16 17:14:19,498 [87] INFO  log4netlogger - GET http://localhost:54938/Images/bg.jpg
+ ----------------------footer-------------------------- 

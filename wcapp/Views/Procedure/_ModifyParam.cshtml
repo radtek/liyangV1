@@ -1,0 +1,572 @@
+﻿@using WCAPP.Types
+@model WCAPP.Models.ProcedureModels.EditParamModel
+
+@{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    var style = new {style = "font-size:14px;color:red"};
+    @Html.ValidationMessage("Error", style)
+
+    <table style="border: none; margin-left: 20px; margin-top: 20px; z-index: 9; position: relative">
+    <thead>
+    <tr>
+        <th style="width:31%">参数名</th>
+        <th style="width:23%">原值</th>
+        <th style="width:23%">新值</th>
+        <th style="width:23%"> </th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (ViewBag.WeldMethod == WeldMethod.氩弧焊)
+    {
+        <tr>
+            <td>焊接电流(A)</td>
+            <td>@Html.DisplayFor(m => m.焊接电流)</td>
+            <td>@Html.TextBoxFor(m => m.焊接电流)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接电流, "请输入焊接电流", style)</td>
+        </tr>
+        <tr>
+            <td>焊接速度(m/min)</td>
+            <td>@Html.DisplayFor(m => m.焊接速度)</td>
+            <td>@Html.TextBoxFor(m => m.焊接速度)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接速度, "请输入焊接速度", style)</td>
+        </tr>
+        <tr>
+            <td>焊料牌号</td>
+            <td>@Html.DisplayFor(m => m.填充材料牌号)</td>
+            <td>@Html.TextBoxFor(m => m.填充材料牌号)</td>
+            <td>@Html.ValidationMessageFor(m => m.填充材料牌号, "请输入焊料牌号", style)</td>
+        </tr>
+        <tr>
+            <td>焊料规格(mm)</td>
+            <td>@Html.DisplayFor(m => m.填充材料规格)</td>
+            <td>@Html.TextBoxFor(m => m.填充材料规格)</td>
+            <td>@Html.ValidationMessageFor(m => m.填充材料规格, "请输入焊料规格", style)</td>
+        </tr>
+        <tr>
+            <td>氩气流量正面(L/min)</td>
+            <td>@Html.DisplayFor(m => m.氩气流量正面)</td>
+            <td>@Html.TextBoxFor(m => m.氩气流量正面)</td>
+            <td>@Html.ValidationMessageFor(m => m.氩气流量正面, "请输入氩气流量正面", style)</td>
+        </tr>
+        <tr>
+            <td>氩气流量反面(L/min)</td>
+            <td>@Html.DisplayFor(m => m.氩气流量反面)</td>
+            <td>@Html.TextBoxFor(m => m.氩气流量反面)</td>
+            <td>@Html.ValidationMessageFor(m => m.氩气流量反面, "请输入氩气流量反面", style)</td>
+        </tr>
+        <tr>
+            <td>电流衰减(s)</td>
+            <td>@Html.DisplayFor(m => m.电流衰减)</td>
+            <td>@Html.TextBoxFor(m => m.电流衰减)</td>
+            <td>@Html.ValidationMessageFor(m => m.电流衰减, "请输入电流衰减", style)</td>
+        </tr>
+        <tr>
+            <td>保护气滞后(m/s)</td>
+            <td>@Html.DisplayFor(m => m.保护气滞后)</td>
+            <td>@Html.TextBoxFor(m => m.保护气滞后)</td>
+            <td>@Html.ValidationMessageFor(m => m.保护气滞后, "请输入保护气滞后", style)</td>
+        </tr>
+        <tr>
+            <td>送丝速度(m/min)</td>
+            <td>@Html.DisplayFor(m => m.送丝速度)</td>
+            <td>@Html.TextBoxFor(m => m.送丝速度)</td>
+            <td>@Html.ValidationMessageFor(m => m.送丝速度, "请输入送丝速度", style)</td>
+        </tr>
+        <tr>
+            <td>钨极直径(mm)</td>
+            <td>@Html.DisplayFor(m => m.钨极直径)</td>
+            <td>@Html.TextBoxFor(m => m.钨极直径)</td>
+            <td>@Html.ValidationMessageFor(m => m.钨极直径, "请输入钨极直径", style)</td>
+        </tr>
+        <tr>
+            <td>喷嘴直径(mm)</td>
+            <td>@Html.DisplayFor(m => m.喷嘴直径)</td>
+            <td>@Html.TextBoxFor(m => m.喷嘴直径)</td>
+            <td>@Html.ValidationMessageFor(m => m.喷嘴直径, "请输入喷嘴直径", style)</td>
+        </tr>
+    }
+
+    @if (ViewBag.WeldMethod == WeldMethod.电阻焊)
+    {
+        <tr>
+            <td>功率级数</td>
+            <td>@Html.DisplayFor(m => m.功率级数)</td>
+            <td>@Html.TextBoxFor(m => m.功率级数)</td>
+            <td>@Html.ValidationMessageFor(m => m.功率级数, "请输入焊接电流", style)</td>
+            
+                @*<span style="width: 160px; display: inline-block">功率级数</span>@Html.TextBoxFor(m => m.功率级数)
+                <span>@Html.ValidationMessageFor(m => m.功率级数, "请输入焊接电流", style)</span>*@
+            
+        </tr>
+        <tr>
+            <td>预压(ms)</td>
+            <td>@Html.DisplayFor(m => m.预压)</td>
+            <td>@Html.TextBoxFor(m => m.预压)</td>
+            <td>@Html.ValidationMessageFor(m => m.预压, "请输入预压", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">预压(ms)</span>@Html.TextBoxFor(m => m.预压)
+            <span>@Html.ValidationMessageFor(m => m.预压, "请输入预压", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>电极压力抬起(KPa)</td>
+            <td>@Html.DisplayFor(m => m.抬起)</td>
+            <td>@Html.TextBoxFor(m => m.抬起)</td>
+            <td>@Html.ValidationMessageFor(m => m.抬起, "请输入电极压力抬起", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">电极压力抬起(KPa)</span>@Html.TextBoxFor(m => m.抬起)
+            <span>@Html.ValidationMessageFor(m => m.抬起, "请输入电极压力抬起", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>电极压力压下(KPa)</td>
+            <td>@Html.DisplayFor(m => m.压下)</td>
+            <td>@Html.TextBoxFor(m => m.压下)</td>
+            <td>@Html.ValidationMessageFor(m => m.压下, "请输入电极压力压下", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">电极压力压下(KPa)</span>@Html.TextBoxFor(m => m.压下)
+                <span>@Html.ValidationMessageFor(m => m.压下, "请输入电极压力压下", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>脉冲1(ms)</td>
+            <td>@Html.DisplayFor(m => m.脉冲1)</td>
+            <td>@Html.TextBoxFor(m => m.脉冲1)</td>
+            <td>@Html.ValidationMessageFor(m => m.脉冲1, "请输入脉冲1", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">脉冲1(ms)</span>@Html.TextBoxFor(m => m.脉冲1)
+            <span>@Html.ValidationMessageFor(m => m.脉冲1, "请输入脉冲1", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>焊接电流1(A)</td>
+            <td>@Html.DisplayFor(m => m.焊接电流1)</td>
+            <td>@Html.TextBoxFor(m => m.焊接电流1)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接电流1, "请输入焊接电流1", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">焊接电流1(A)</span>@Html.TextBoxFor(m => m.焊接电流1)
+            <span>@Html.ValidationMessageFor(m => m.焊接电流1, "请输入焊接电流1", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>冷却(ms)</td>
+            <td>@Html.DisplayFor(m => m.冷却)</td>
+            <td>@Html.TextBoxFor(m => m.冷却)</td>
+            <td>@Html.ValidationMessageFor(m => m.冷却, "请输入冷却", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">冷却(ms)</span>@Html.TextBoxFor(m => m.冷却)
+            <span>@Html.ValidationMessageFor(m => m.冷却, "请输入冷却", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>脉冲2</td>
+            <td>@Html.DisplayFor(m => m.脉冲2)</td>
+            <td>@Html.TextBoxFor(m => m.脉冲2)</td>
+            <td>@Html.ValidationMessageFor(m => m.脉冲2, "请输入脉冲2", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">脉冲2(ms)</span>@Html.TextBoxFor(m => m.脉冲2)
+                <span>@Html.ValidationMessageFor(m => m.脉冲2, "请输入脉冲2", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>焊接电流2(A)</td>
+            <td>@Html.DisplayFor(m => m.焊接电流2)</td>
+            <td>@Html.TextBoxFor(m => m.焊接电流2)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接电流2, "请输入焊接电流2", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">焊接电流2(A)</span>@Html.TextBoxFor(m => m.焊接电流2)
+            <span>@Html.ValidationMessageFor(m => m.焊接电流2, "请输入焊接电流2", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>维持(ms)</td>
+            <td>@Html.DisplayFor(m => m.维持)</td>
+            <td>@Html.TextBoxFor(m => m.维持)</td>
+            <td>@Html.ValidationMessageFor(m => m.维持, "请输入维持", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">维持(ms)</span>@Html.TextBoxFor(m => m.维持)
+            <span>@Html.ValidationMessageFor(m => m.维持, "请输入维持", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>休止(ms)</td>
+            <td>@Html.DisplayFor(m => m.休止)</td>
+            <td>@Html.TextBoxFor(m => m.休止)</td>
+            <td>@Html.ValidationMessageFor(m => m.休止, "请输入休止", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">休止(ms)</span>@Html.TextBoxFor(m => m.休止)
+            <span>@Html.ValidationMessageFor(m => m.休止, "请输入休止", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>下气室气压(kPa)</td>
+            <td>@Html.DisplayFor(m => m.下气室气压)</td>
+            <td>@Html.TextBoxFor(m => m.下气室气压)</td>
+            <td>@Html.ValidationMessageFor(m => m.下气室气压, "请输入下气室气压", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">下气室气压(kPa)</span>@Html.TextBoxFor(m => m.下气室气压)
+            <span>@Html.ValidationMessageFor(m => m.下气室气压, "请输入下气室气压", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>中气室气压(kPa)</td>
+            <td>@Html.DisplayFor(m => m.中气室气压)</td>
+            <td>@Html.TextBoxFor(m => m.中气室气压)</td>
+            <td>@Html.ValidationMessageFor(m => m.下气室气压, "请输入中气室气压", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">中气室气压(kPa)</span>@Html.TextBoxFor(m => m.中气室气压)
+            <span>@Html.ValidationMessageFor(m => m.中气室气压, "请输入中气室气压", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>焊接速度(m/min)</td>
+            <td>@Html.DisplayFor(m => m.焊接速度)</td>
+            <td>@Html.TextBoxFor(m => m.焊接速度)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接速度, "请输入焊接速度", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">焊接速度(m/min)</span>@Html.TextBoxFor(m => m.焊接速度)
+                <span>@Html.ValidationMessageFor(m => m.焊接速度, "请输入焊接速度", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>熔核直径(mm)</td>
+            <td>@Html.DisplayFor(m => m.熔核直径)</td>
+            <td>@Html.TextBoxFor(m => m.熔核直径)</td>
+            <td>@Html.ValidationMessageFor(m => m.熔核直径, "请输入熔核直径", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">熔核直径(mm)</span>@Html.TextBoxFor(m => m.熔核直径)
+                <span>@Html.ValidationMessageFor(m => m.熔核直径, "请输入熔核直径", style)</span>
+            </td>*@
+        </tr>
+    }
+
+    @if (ViewBag.WeldMethod == WeldMethod.电子束焊)
+    {
+        <tr>
+            <td>功率</td>
+            <td>@Html.DisplayFor(m => m.功率)</td>
+            <td>@Html.TextBoxFor(m => m.功率)</td>
+            <td>@Html.ValidationMessageFor(m => m.功率, "请输入功率", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">功率</span>@Html.TextBoxFor(m => m.功率)
+            <span>@Html.ValidationMessageFor(m => m.功率, "请输入功率", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>加速电压(kV)</td>
+            <td>@Html.DisplayFor(m => m.加速电压)</td>
+            <td>@Html.TextBoxFor(m => m.加速电压)</td>
+            <td>@Html.ValidationMessageFor(m => m.加速电压, "请输入加速电压", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">加速电压(kV)</span>@Html.TextBoxFor(m => m.加速电压)
+                <span>@Html.ValidationMessageFor(m => m.加速电压, "请输入加速电压", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>电子束流(mA)</td>
+            <td>@Html.DisplayFor(m => m.电子束流)</td>
+            <td>@Html.TextBoxFor(m => m.电子束流)</td>
+            <td>@Html.ValidationMessageFor(m => m.电子束流, "请输入电子束流", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">电子束流(mA)</span>@Html.TextBoxFor(m => m.电子束流)
+                <span>@Html.ValidationMessageFor(m => m.电子束流, "请输入电子束流", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>焊接速度(mm/min)</td>
+            <td>@Html.DisplayFor(m => m.焊接速度)</td>
+            <td>@Html.TextBoxFor(m => m.焊接速度)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接速度, "请输入焊接速度", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">焊接速度(mm/min)</span>@Html.TextBoxFor(m => m.焊接速度)
+                <span>@Html.ValidationMessageFor(m => m.焊接速度, "请输入焊接速度", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>聚焦电流(mA)</td>
+            <td>@Html.DisplayFor(m => m.聚焦电流)</td>
+            <td>@Html.TextBoxFor(m => m.聚焦电流)</td>
+            <td>@Html.ValidationMessageFor(m => m.聚焦电流, "请输入聚焦电流", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">聚焦电流(mA)</span>@Html.TextBoxFor(m => m.聚焦电流)
+            <span>@Html.ValidationMessageFor(m => m.聚焦电流, "请输入聚焦电流", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>工作距离(mm)</td>
+            <td>@Html.DisplayFor(m => m.工作距离)</td>
+            <td>@Html.TextBoxFor(m => m.工作距离)</td>
+            <td>@Html.ValidationMessageFor(m => m.工作距离, "请输入工作距离", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">工作距离(mm)</span>@Html.TextBoxFor(m => m.工作距离)
+                <span>@Html.ValidationMessageFor(m => m.工作距离, "请输入工作距离", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>束流上升斜率控制/S</td>
+            <td>@Html.DisplayFor(m => m.上升)</td>
+            <td>@Html.TextBoxFor(m => m.上升)</td>
+            <td>@Html.ValidationMessageFor(m => m.上升, "请输入束流上升斜率控制/S", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">束流上升斜率控制/S</span>@Html.TextBoxFor(m => m.上升)
+                <span>@Html.ValidationMessageFor(m => m.上升, "请输入束流上升斜率控制/S", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>束流下降斜率控制/S</td>
+            <td>@Html.DisplayFor(m => m.下降)</td>
+            <td>@Html.TextBoxFor(m => m.下降)</td>
+            <td>@Html.ValidationMessageFor(m => m.下降, "请输入束流下降斜率控制/S", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">束流下降斜率控制/S</span>@Html.TextBoxFor(m => m.下降)
+            <span>@Html.ValidationMessageFor(m => m.下降, "请输入束流下降斜率控制/S", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>焊接真空度(Pa)</td>
+            <td>@Html.DisplayFor(m => m.焊接真空度)</td>
+            <td>@Html.TextBoxFor(m => m.焊接真空度)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接真空度, "请输入焊接真空度", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">焊接真空度(Pa)</span>@Html.TextBoxFor(m => m.焊接真空度)
+                <span>@Html.ValidationMessageFor(m => m.焊接真空度, "请输入焊接真空度", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>电子束扫描偏转波形</td>
+            <td>@Html.DisplayFor(m => m.波形)</td>
+            <td>@Html.TextBoxFor(m => m.波形)</td>
+            <td>@Html.ValidationMessageFor(m => m.波形, "请输入电子束扫描偏转波形", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">电子束扫描偏转波形</span>@Html.TextBoxFor(m => m.波形)
+            <span>@Html.ValidationMessageFor(m => m.波形, "请输入电子束扫描偏转波形", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>电子束扫描偏转幅值</td>
+            <td>@Html.DisplayFor(m => m.幅值)</td>
+            <td>@Html.TextBoxFor(m => m.幅值)</td>
+            <td>@Html.ValidationMessageFor(m => m.幅值, "请输入电子束扫描偏转幅值", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">电子束扫描偏转幅值</span>@Html.TextBoxFor(m => m.幅值)
+                <span>@Html.ValidationMessageFor(m => m.幅值, "请输入电子束扫描偏转幅值", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>电子束扫描偏转频率</td>
+            <td>@Html.DisplayFor(m => m.频率)</td>
+            <td>@Html.TextBoxFor(m => m.频率)</td>
+            <td>@Html.ValidationMessageFor(m => m.频率, "请输入电子束扫描偏转频率", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">电子束扫描偏转频率</span>@Html.TextBoxFor(m => m.频率)
+            <span>@Html.ValidationMessageFor(m => m.频率, "请输入电子束扫描偏转频率", style)</span>
+        </td>*@
+        </tr>
+    }
+
+    @if (ViewBag.WeldMethod == WeldMethod.高频钎焊)
+    {
+
+        <tr>
+            <td>钎料牌号</td>
+            <td>@Html.DisplayFor(m => m.钎料牌号)</td>
+            <td>@Html.TextBoxFor(m => m.钎料牌号)</td>
+            <td>@Html.ValidationMessageFor(m => m.钎料牌号, "请输入钎料牌号", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">钎料牌号</span>@Html.TextBoxFor(m => m.钎料牌号)
+                <span>@Html.ValidationMessageFor(m => m.钎料牌号, "请输入钎料牌号", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>填料规格(mm)</td>
+            <td>@Html.DisplayFor(m => m.钎料规格)</td>
+            <td>@Html.TextBoxFor(m => m.钎料规格)</td>
+            <td>@Html.ValidationMessageFor(m => m.钎料规格, "请输入填料规格", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">填料规格(mm)</span>@Html.TextBoxFor(m => m.钎料规格)
+                <span>@Html.ValidationMessageFor(m => m.钎料规格, "请输入填料规格", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>焊接电压(V)</td>
+            <td>@Html.DisplayFor(m => m.焊接电压)</td>
+            <td>@Html.TextBoxFor(m => m.焊接电压)</td>
+            <td>@Html.ValidationMessageFor(m => m.焊接电压, "请输入焊接电压", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">焊接电压(V)</span>@Html.TextBoxFor(m => m.焊接电压)
+            <span>@Html.ValidationMessageFor(m => m.焊接电压, "请输入焊接电压", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>氩气流量(L/min)</td>
+            <td>@Html.DisplayFor(m => m.氩气流量)</td>
+            <td>@Html.TextBoxFor(m => m.氩气流量)</td>
+            <td>@Html.ValidationMessageFor(m => m.氩气流量, "请输入氩气流量", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">氩气流量(L/min)</span>@Html.TextBoxFor(m => m.氩气流量)
+                <span>@Html.ValidationMessageFor(m => m.氩气流量, "请输入氩气流量", style)</span>
+            </td>*@
+        </tr>
+        <tr>
+            <td>感应圈编号</td>
+            <td>@Html.DisplayFor(m => m.感应圈编号)</td>
+            <td>@Html.TextBoxFor(m => m.感应圈编号)</td>
+            <td>@Html.ValidationMessageFor(m => m.感应圈编号, "请输入感应圈编号", style)</td>
+            @*<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="padding: 8px">
+            <span style="width: 160px; display: inline-block">感应圈编号</span>@Html.TextBoxFor(m => m.感应圈编号)
+            <span>@Html.ValidationMessageFor(m => m.感应圈编号, "请输入感应圈编号", style)</span>
+        </td>*@
+        </tr>
+        <tr>
+            <td>管子规格(mm)</td>
+            <td>@Html.DisplayFor(m => m.管子规格)</td>
+            <td>@Html.TextBoxFor(m => m.管子规格)</td>
+            <td>@Html.ValidationMessageFor(m => m.管子规格, "请输入管子规格", style)</td>
+            @*<td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="padding: 8px">
+                <span style="width: 160px; display: inline-block">管子规格(mm)</span>@Html.TextBoxFor(m => m.管子规格)
+                <span>@Html.ValidationMessageFor(m => m.管子规格, "请输入管子规格", style)</span>
+            </td>*@
+        </tr>
+    }
+
+    @*@if (ViewBag.WeldMethod == WeldMethod.等离子焊)
+    {
+    }*@
+    <tr><td>&nbsp;</td></tr>
+    <tr>
+        <td colspan="3" style="text-align: center">
+            <input type="submit" value="确  定" class="btn btn-large btn-primary">
+        </td>
+    </tr>
+    </tbody>
+    </table>
+}

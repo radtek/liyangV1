@@ -1,0 +1,70 @@
+﻿@model WCAPP.Models.UserModels.ModifyUserModel
+@using WCAPP.Types
+@using (Html.BeginForm("Modify", "User", FormMethod.Post, new {id = "add_user"}))
+{
+    @*@Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)*@
+    <div style="border: 1px solid #eee; padding: 10px;">
+        <div class="tabbable">
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a style="font-size: 16px" href="#tab1" data-toggle="tab">修改员工信息</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    @*<form class="form-horizontal">*@
+                    <div class="control-group" style="margin: 10px">
+                        <span style="width: 100px; display: inline-block; font-weight: bold">工号</span>@Html.TextBoxFor(m => m.Id, new { @readonly = "readonly" })
+                        <span>@Html.ValidationMessageFor(m => m.Id, "请输入工号")</span>
+                    </div>
+                    <div class="control-group" style="margin: 10px">
+                        <span style="width: 100px; display: inline-block; font-weight: bold">姓名</span>@Html.TextBoxFor(m => m.Name)
+                        <span>@Html.ValidationMessageFor(m => m.Name, "请输入姓名")</span>
+                    </div>
+                    <div class="control-group" style="margin: 10px">
+                        <span style="width: 100px; display: inline-block; font-weight: bold">部门</span>@Html.TextBoxFor(m => m.Department)
+                        <span>@Html.ValidationMessageFor(m => m.Department, "请输入部门")</span>
+                    </div>
+                    <div class="control-group" style="margin: 10px">
+                        <span style="width: 120px; display: inline-block; font-weight: bold">性别</span>@Html.SelectFor(m => m.Sex)
+                        <span>@Html.ValidationMessageFor(m => m.Sex, "请输入性别")</span>
+                    </div>
+                    <div class="control-group" style="margin: 10px">
+                        <span style="width: 120px; display: inline-block; font-weight: bold">岗位</span>@Html.SelectFor(m => m.Position)
+                        <span>@Html.ValidationMessageFor(m => m.Position, "请输入岗位")</span>
+                    </div>
+                    <div class="control-group" style="display: none">
+                        <span style="width: 120px; display: inline-block; font-weight: bold">岗位</span>@Html.TextBoxFor(m => m.pageNo)
+                        <span>@Html.ValidationMessageFor(m => m.pageNo, "请输入岗位")</span>
+                    </div>
+                    <div class="control-group" style="margin: 10px">
+                        <label class="control-label" style="position: relative; top: -56px;">权限</label>
+                        <div style="display: inline-block; margin-left: -20px;">
+
+                            @{
+                List<Authority> auths = ViewBag.Authorities;
+                foreach (Authority auth in Enum.GetValues(typeof(Authority)))
+                {
+                    <label class="checkbox">
+                        <input type="checkbox" @(auths.Contains(auth) ? "checked=checked" : "") value="@auth.ToString()" name="Authorities"> @auth.ToString()
+                    </label>
+}
+                            }
+
+                        </div>
+                    </div>
+
+                    @*</form>*@
+                </div>
+                <div style="margin-left: 174px">
+                    <button type="submit" class="btn btn-large btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+        @*<div style="margin-left: 174px">
+            <button type="submit" class="btn btn-large btn-primary">确定</button>
+        </div>*@
+    </div>
+}

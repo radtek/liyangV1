@@ -1,0 +1,17 @@
+ ----------------------header-------------------------- 2018-11-02 10:56:11,504 [10] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-02 11:09:20,127 [31] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-02 11:09:24,711 [20] INFO  log4netlogger - POST http://localhost:9991/
+2018-11-02 11:09:28,641 [8] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-02 11:09:29,406 [21] INFO  log4netlogger - GET http://localhost:9991/Content/process.css
+2018-11-02 11:12:33,857 [8] INFO  log4netlogger - POST http://localhost:9991/Process/DisPlayApprovalState
+2018-11-02 11:12:41,392 [27] INFO  log4netlogger - POST http://localhost:9991/Process/EditProcessUser?creId=33
+2018-11-02 11:12:42,956 [30] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Process
+2018-11-02 11:12:42,987 [8] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-02 11:12:47,016 [31] INFO  log4netlogger - POST http://localhost:9991/Process/DeleteProcess/33
+2018-11-02 11:12:49,578 [30] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Process
+2018-11-02 11:12:49,604 [33] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-02 11:12:55,848 [34] INFO  log4netlogger - POST http://localhost:9991/Process/DeleteProcess/2
+2018-11-02 11:12:57,076 [27] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Process
+2018-11-02 11:12:57,098 [31] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-02 11:12:59,728 [30] INFO  log4netlogger - GET http://localhost:9991/Process
+ ----------------------footer-------------------------- 

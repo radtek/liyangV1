@@ -1,0 +1,83 @@
+﻿@model WCAPP.Models.ProcessModels.AddProcedureModel
+
+@{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    var style = new {style = "font-size:14px;color:red"};
+    @Html.ValidationMessage("Error", style)
+
+    <table style="border: none; margin: 10px; z-index: 9; position: relative">
+        <tr >
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">工序号</span>@Html.TextBoxFor(m => m.No)
+                <span>@Html.ValidationMessageFor(m => m.No, "请输入工序号", style)</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">工序名称</span>@Html.TextBoxFor(m => m.Name)
+                <span>@Html.ValidationMessageFor(m => m.Name, "请输入工序名称", style)</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">焊接方法</span>@Html.SelectFor(m => m.WeldMethod, new {id = "weldmethod"})
+                <span>@Html.ValidationMessageFor(m => m.WeldMethod, "请输入焊接方法", style)</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">焊接类型</span>@Html.SelectFor(m => m.WeldType)
+                <span>@Html.ValidationMessageFor(m => m.WeldType, "请输入焊接类型", style)</span>
+            </td>
+        </tr>
+        <tr id="weldway" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">焊接方式</span>@Html.SelectFor(m => m.ResistType)
+                <span>@Html.ValidationMessageFor(m => m.ResistType, "请输入焊接方式", style)</span>
+            </td>
+        </tr>
+        <tr id="autolevel" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">自动化程度</span>@Html.SelectFor(m => m.AutoLevel)
+                <span>@Html.ValidationMessageFor(m => m.AutoLevel, "请输入自动化程度", style)</span>
+            </td>
+        </tr>
+        <tr style="padding: 8px">
+            <td>
+                <input type="submit" value="提交" class="btn btn-large btn-primary">
+            </td>
+        </tr>
+    </table>
+}
+
+<script>
+    function onResp(data) {
+        if (data.succeed) {
+            reload();
+        } else if (data.error) {
+            alert(data.error);
+        }
+    }
+    function config() {
+        var ww= $("#weldway");
+        var al=$("#autolevel");
+        switch($(this).val()) {
+        case "氩弧焊":
+            ww.hide();
+            al.show();
+            break;
+        case "电阻焊":
+            ww.show();
+            al.hide();
+            break;
+        default:
+            ww.hide();
+            al.hide();
+        }
+    }
+
+    var wm = $("#weldmethod");
+    wm.change(config);
+    config.apply(wm);
+</script>

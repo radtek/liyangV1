@@ -1,0 +1,228 @@
+﻿@using WCAPP.Types
+@model WCAPP.Models.ProcessModels.PdmCreateModel
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">创建焊接工艺规程</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content" style="border: none; padding: 20px 60px 20px;">
+
+
+                    <table style="border: none; width: 100%">
+                        <tr>
+                            <td style="padding: 0 20px">
+                                <span style="width: 100px; display: inline-block;">工艺规程编号</span>
+                            </td>
+                            <td style="padding: 0 20px">
+                                <span style="width: 100px; display: inline-block">零件号</span>
+                            </td>
+                            <td style="padding: 0 20px">
+                                <span style="width: 100px; display: inline-block">零件名称</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0 20px">
+                                @Html.TextBoxFor(m => m.No, new { disabled = "disabled" })
+                            </td>
+                            <td style="padding: 0 20px">
+                                @Html.TextBoxFor(m => m.PartNo, new { disabled = "disabled" })
+                            </td>
+                            <td style="padding: 0 20px">
+                                @Html.TextBoxFor(m => m.PartName, new { disabled = "disabled" })
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="border: none; margin: 20px 10px; width: 100%">
+                        <tr>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">工序号</span>
+                            </td>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">工序名称</span>
+                            </td>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">焊接方法</span>
+                            </td>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">焊接类型</span>
+                            </td>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">焊接方式</span>
+                            </td>
+                            <td style="padding: 8px">
+                                <span style="width: 100px; display: inline-block">自动化程度</span>
+                            </td>
+                        </tr>
+                        @{
+                            var i = 0;
+                            foreach (var procedure in Model.Procedures)
+                            {
+                        <tr>
+                            <td style="padding: 0 8px 6px 8px">
+                                <input type="hidden" value="@procedure.PdmId" id="@("id-" + i)">
+                                <input type="text" disabled="disabled" value="@procedure.No" id="@("no-" + i)">
+                            </td>
+                            <td style="padding: 0 8px 6px 8px">
+                                <input type="text" disabled="disabled" value="@procedure.Name" id="@("name-" + i)">
+                            </td>
+                            @if (ViewBag.WeldMethods != null)// (SelectList)ViewBag.WeldMethods
+    {
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("WeldMethod", (SelectList)ViewBag.WeldMethods, new { id = "weldmethod-" + i })
+                        </td>
+}
+else
+{//ViewBag.List as IEnumerable<SelectListItem>
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("WeldMethod", Enum<WeldMethod>.GetSelectList(), "-- 请选择 --", new { id = "weldmethod-" + i })
+                        </td>
+}
+                            @if (ViewBag.WeldTypes != null)
+    {
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("WeldType",(SelectList)ViewBag.WeldTypes, new { id = "weldtype-" + i })
+                        </td>
+}
+else
+{
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("WeldType", Enum<WeldType>.GetSelectList(), "-- 请选择 --", new { id = "weldtype-" + i })
+                        </td>
+}
+
+                            @if (ViewBag.ResistTypes != null)
+    {
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("ResistType", (SelectList)ViewBag.ResistTypes, new { id = "resisttype-" + i })
+                        </td>
+}
+else
+{
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("ResistType", Enum<ResistType>.GetSelectList(), "-- 请选择 --", new { id = "resisttype-" + i })
+                        </td>
+}
+                            @if (ViewBag.AutoLevels!=null)
+	{
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("AutoLevel", (SelectList)ViewBag.AutoLevels, new { id = "autolevel-" + i })
+                        </td>
+}
+                            else
+                            {
+                        <td style="padding: 0 8px 6px 8px">
+                            @Html.DropDownList("AutoLevel", Enum<AutoLevel>.GetSelectList(), "-- 请选择 --", new { id = "autolevel-" + i })
+                        </td>
+                            }
+                        </tr>
+                                i++;
+                            }
+                        }
+                    </table>
+                    <div style="text-align: center">
+                        <button id="submit" class="btn btn-primary" onclick="submit()">创建</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var procedureCount = @Model.Procedures.Count;
+
+        function config(no, val) {
+            var ww = $("#resisttype-" + no);
+            var al = $("#autolevel-" + no);
+            switch (val) {
+            case "氩弧焊":
+                ww.attr("disabled", "disabled");
+                al.removeAttr("disabled");
+                break;
+            case "电阻焊":
+                ww.removeAttr("disabled");
+                al.attr("disabled", "disabled");
+                break;
+            default:
+                ww.attr("disabled", "disabled");
+                al.attr("disabled", "disabled");
+            }
+        }
+
+        function submit() {
+            var process = {
+                PdmId: "@Model.PdmId",
+                No: "@Model.No",
+                PartNo: "@Model.PartNo",
+                PartName: "@Model.PartName",
+                Procedures: []
+            }
+
+            for (var i = 0; i < procedureCount; i++) {
+                var procedure = {
+                    PdmId: $("#id-" + i).val(),
+                    No: $("#no-" + i).val(),
+                    Name: $("#name-" + i).val()
+                };
+
+                var weldmethod = $("#weldmethod-" + i).val();
+                if (weldmethod !== "")
+                    procedure.WeldMethod = weldmethod;
+
+                var weldtype = $("#weldtype-" + i).val();
+                if (weldtype !== "")
+                    procedure.WeldType = weldtype;
+
+                var resisttype = $("#resisttype-" + i).val();
+                if (resisttype !== "")
+                    procedure.ResistType = resisttype;
+
+                var autolevel = $("#autolevel-" + i).val();
+                if (autolevel !== "")
+                    procedure.AutoLevel = autolevel;
+                process.Procedures.push(procedure);
+            }
+
+            $.ajax({
+                url: "@(ViewBag.UpVersion==true ? Url.Action("PdmRevise") : Url.Action("PdmCreate"))",
+                type: "post",
+                data: { json: JSON.stringify(process) },
+                error: function() {},
+                success: function(data) {
+                    if (data.succeed) {
+                        location.href = "@Url.Action("Creating",new {id="_"})".replace("_", data.id);
+                    } else {
+                        alert(data.error);
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script>
+        for (var i = 0; i < procedureCount; i++) {
+            var wm = $("#weldmethod-" + i);
+            wm.change((function(no) {
+                return function() {
+                    config(no, $(this).val());
+                }
+            })(i));
+            config(i, wm.val());
+        }
+
+        if ("@ViewBag.UpVersion".toLowerCase() == "true") {
+            $("#submit")[0].innerText="升版";
+            alert("工序信息不一致，将进行升版");
+        }
+    </script>
+
+}

@@ -1,0 +1,168 @@
+﻿@using WCAPP.Models.Database
+@using WCAPP.Types
+
+@{
+    Process process = ViewBag.Process;
+    IQueryable<Process> history = ViewBag.HistoryProcesses;
+    var testStateDict = (Dictionary<int, ProgramTestState>)ViewBag.TestStateDict;
+}
+
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        @*        <ul class="breadcrumb">*@
+        @*            <li>@Html.ActionLink("焊接工艺规程", "Index", "Home")</li>*@
+        @*            <li class="active">规程</li>*@
+        @*        </ul>*@
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">规程信息</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content">
+                    <div class="row" style="padding: 20px 60px 20px;">
+                        <div class="col-md-3 col-xs-3">
+                            工艺规程编号：@process.No
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            审核状态：@process.ApprovalState
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            版本：@process.VersionString
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            发布状态：@(process.Published?"已发布":"未发布")
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding: 0 60px 20px;">
+                        <div class="col-md-3 col-xs-3">
+                            零件号：@process.PartNo
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            零件名称：@process.PartName
+                        </div>
+                        <div class="col-md-3 col-xs-3">
+                            编制者：@process.Author
+                        </div>
+                    </div>
+
+                    <table class="table table-striped table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-center">工序号</th>
+                                <th class="text-center">工序名称</th>
+                                <th class="text-center">焊接方法</th>
+                                <th class="text-center">焊接类型</th>
+                                <th class="text-center">试焊状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                if (process != null && process.Procedures != null)
+                                {
+                                    foreach (var pro in process.Procedures)
+                                    {
+                                        <tr>
+                                            <td>@Html.ActionLink(pro.No, "Detail", "Procedure", new { id = pro.Id }, null)</td>
+                                            <td>@pro.Name</td>
+                                            <td>@pro.WeldMethod</td>
+                                            <td>@pro.WeldType</td>
+                                            <td>@pro.TestState</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="bntpanel" style="text-align: center">
+            @{
+
+        Func<bool, object> enable = publish => new { @class = "btn btn-" + (publish ? "primary" : "info") };
+        Func<bool, object> disable = publish => new { @class = "disabled btn btn-" + (publish ? "primary" : "info"), disabled = "disabled" };
+        var canPublish = process.TestState == ProgramTestState.已完成 && !process.Published;
+        var canRevise = process.Published;
+        <a id="comeBack" class="btn btn-primary" onclick="comeBack()">返回上一级</a>
+        @Ajax.ActionLink("发布工艺规程", "Publish", new { process.Id }, new AjaxOptions { OnSuccess = "onSimple", HttpMethod = "Post" }, canPublish ? enable(true) : disable(true))
+        <span>&nbsp;&nbsp;</span>
+        @Ajax.ActionLink("修订工艺规程", "Revise", new { process.Id }, new AjaxOptions { OnSuccess = "onRevise", HttpMethod = "Post" }, canRevise ? enable(false) : disable(false))
+        <span>&nbsp;&nbsp;</span>
+        <a id="showPdf" class="btn btn-primary" onclick="getPdf()">查看PDF</a>
+        <a id="showRevisePdf" class="btn btn-primary" onclick="getRevisePdf()">查看更改报告PDF</a>
+            }
+        </div>
+        <div>
+            @if (history.Any())
+            {
+                <h3>查看历史版本</h3>
+                <ul>
+                    @foreach (var p in history)
+                    {
+                        <li>@Html.ActionLink(p.VersionString, "Detail", new { p.Id })</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        function publishProcess(id) {
+            $.ajax({
+                url: "@Url.Action("Publish")",
+                type: "post",
+                data: { id: id },
+                error: function() {},
+                success: function(data) {
+                    //onSimple(data);
+                    alert("发布成功！")
+                }
+            });
+        }
+
+        function onRevise(data) {
+            if (data.succeed) {
+                location.href = '@Url.Action("Creating")' + '/' + data.pid;
+            } else if (data.error) {
+                alert(data.error);
+            }
+        }
+
+        function getPdf() {
+            var w = window.open();
+            w.location.href = "@Url.Action("GetPdf", new {process.Id})";
+        }
+         function getRevisePdf() {
+            var w = window.open();
+            w.location.href = "@Url.Action("GetRevisePdf", new {process.Id})";
+        }
+
+        if (window.gotProcess instanceof Function) {
+            var bntpan = $("#bntpanel");
+            bntpan.append("&nbsp;&nbsp;");
+            $('<button @(process.Published?"":"disabled") class="@("btn btn-primary" + (process.Published ? "" : " disabled"))">PDM获取工艺规程</button>')
+                .appendTo(bntpan)
+                .click(function() {
+                    $.ajax({
+                        url: "@Url.Action("GetByPdm", new {id = process.Id})",
+                        type: "post",
+                        error: function() {},
+                        success: function(data) {
+                            window.gotProcess(data.json, data.pdf);
+                        }
+                    });
+                });
+            $("#showPdf").remove();
+            $("#showRevisePdf").remove();
+        }
+        function comeBack() {
+            location.href='@Url.Action("Index")'+'#1';
+        }
+    </script>
+}

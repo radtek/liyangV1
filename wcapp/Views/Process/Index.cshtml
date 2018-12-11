@@ -1,0 +1,1045 @@
+﻿@using Antlr.Runtime.Tree
+@using WCAPP.Models.Database
+@using WCAPP.Types
+
+@*<div>@ViewBag.TestModel</div>*@
+
+<div style="border: 1px solid #eee; padding: 10px;">
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        @*        <ul class="breadcrumb">*@
+        @*            <li class="active">工艺规程</li>*@
+        @*        </ul>*@
+        <ul class="nav nav-tabs">
+            <li class="active" id="tah1">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">焊接工艺规程</a>
+            </li>
+            <li id="tah2">
+                <a style="font-size: 16px" href="#tab2" data-toggle="tab">创建中焊接工艺规程</a>
+            </li>
+            <li id="tah3">
+                <a style="font-size: 16px" href="#tab3" data-toggle="tab" onclick="Revise()">修订中焊接工艺规程</a>
+            </li>
+        </ul>
+
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th style="display:inline">
+                                <div>
+                                    <div class="select_box">
+
+                                        <font>›</font>
+
+                                        <span>发布状态</span>
+
+                                        <ul id="published">
+
+                                            <li>未选择</li>
+
+                                            <li>未发布</li>
+
+                                            <li>已发布</li>
+
+                                        </ul>
+
+                                    </div>
+                                    <div class="select_box">
+
+                                        <font>›</font>
+
+                                        <span>试焊状态</span>
+
+                                        <ul id="testState">
+
+                                            <li>未选择</li>
+
+                                            <li>未完成</li>
+
+                                            <li>已完成</li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="searchbox">
+                                    <ul class="border1">
+                                        <li><a href="#" class="style1">零件号</a></li>
+                                        <li><a href="#">编制者</a></li>
+                                    </ul>
+                                    <div class="bodys">
+                                        <p><input type="text" value="" id="partnoseach" class="one" placeholder="零件号" /><button class="one1" onclick="PartnoSeach()">搜索</button></p>
+                                        <p><input type="text" value="" id="userseach" class="two" placeholder="编制者" /><button class="two2" onclick="UserSeach()">搜索</button></p>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <table class="table table-striped table-hover text-center">
+
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                <input type="checkbox" id="selAll" onclick="swapCheck()" />
+                                <button style="padding: 2px 6px 0 6px; font-size: 10px" class="btn btn-primary" onclick="importProcesses()">批量导出EXCEL</button>
+                            </th>
+                            <th class="text-center">工艺规程编号</th>
+                            <th class="text-center">版本</th>
+                            <th class="text-center">零件号</th>
+                            <th class="text-center">零件名称</th>
+                            <th class="text-center">试焊状态</th>
+                            <th class="text-center">编制者</th>
+                            <th class="text-center">发布状态</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                            @*<th class="text-center"><button id="checkMessage" type="submit" style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="CheckMessage()">修正数据</button></th>*@
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.list != null)
+    {
+        foreach (Process pro in ViewBag.list)
+        {
+                    <tr>
+                        <td><input type="checkbox" name="processId" value="@pro.Id" /></td>
+                        <td>@Html.ActionLink(pro.No, "Detail", "Process", new { id = pro.Id }, null)</td>
+                        <td>@pro.VersionString</td>
+                        <td>@pro.PartNo</td>
+                        <td>@pro.PartName</td>
+                        <td>@pro.TestState</td>
+                        <td>@pro.Author</td>
+                        <td>@(pro.Published ? "已发布" : "未发布")</td>
+                        <td>
+                            <button @(pro.TestState == ProgramTestState.已完成 && !pro.Published ? "" : "disabled=disabled")
+                                    style="padding: 2px 6px; font-size: 12px"
+                                    class="@("btn btn-info" + (pro.TestState == ProgramTestState.已完成 && !pro.Published ? "" : " disabled"))"
+                                    onclick="publishProcess(@pro.Id)">
+                                发布
+                            </button>
+                        </td>
+                        <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="editUser('@pro.Id')">编辑编制者</button></td>
+
+                        <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="importProcess('@pro.Id')">导出EXCEL</button></td>
+                        <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-danger" onclick="delPros('@pro.Id')">删除</button></td>
+                    </tr>
+                    <div id="@("editUser-pro" + pro.Id)" title="编辑编制者" style="display: none">
+
+                        <div class="text-center">
+
+                            <div style="display: inline-block">
+                                @using (Ajax.BeginForm("EditProcessUser", new { copId = pro.Id }, new AjaxOptions { OnSuccess = "EditProcess" }))
+            {
+                if (pro.Author != null)
+                {
+                    <div style="text-align:center; padding: 20px ;">
+                        <span style="width: 30px; display: inline">原编制者</span>
+                        <span style="width: 200px;">@Html.TextBox("Author", pro.Author.Name, new { @readonly = "readonly" })</span>
+                    </div>
+}
+else
+{
+                    <div style="text-align:center; padding: 20px ;">
+                        <span style="width: 30px; display: inline">原编制者</span>
+                        <span style="width: 200px;">@Html.TextBox("Author", "", new { @readonly = "readonly" })</span>
+                    </div>
+}
+
+                    <div style="text-align: center; padding: 20px ;">
+                        <span style="width: 30px; display: inline">现编制者</span>
+                        <span style="width: 200px;">@Html.TextBox("nowUser")</span>
+                    </div>
+                    <div style="text-align: center; padding: 20px ;">
+                        <input class="btn btn-primary" type="submit" value="确认修改" />
+                        <button class="btn btn-info" onclick="$('#@("editUser-pro" + pro.Id)').dialog('close')">取消</button>
+                    </div>
+}
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div id="@("delete-pros" + pro.Id)" style="display: none">
+
+                        <div class="text-center">
+                            <div style="display: inline-block">
+                                @using (Ajax.BeginForm("DeleteProcess", new { id = pro.Id }, new AjaxOptions { OnSuccess = "onGenParam(data, " + 1 + ")" }))
+            {
+
+                    <input id="confirmDelete" class="btn btn-primary" type="submit" value="确认删除" />
+}
+                            </div>
+                            <button class="btn btn-info" onclick="$('#@("delete-pros" + pro.Id)').dialog('close')">取消</button>
+
+                        </div>
+                    </div>
+}
+}
+                    </tbody>
+                </table>
+                @if (ViewBag.Search == "")
+                {
+                    <div style="display:inline-block;float:left">
+                        @Html.DropDownList("pageSize", (SelectList)ViewBag.PageSize)<input type="button" value="Go" onclick="GoPageSize()" />
+                    </div>
+                    <div style="margin: 0 auto; text-align: right;">
+                        共<font color="red"> @ViewBag.PageCount </font>页，当前是第<font style="color:red"> @ViewBag.PageNo </font>页
+                        @Html.ActionLink("首页", "Index", new { copPageNo = 1, pageSize = ViewBag.PageSizes })
+                        @Html.ActionLink("上一页", "Index", "Process", new { copPageNo = (int)ViewBag.PageNo - 1, pageSize = ViewBag.PageSizes }, null)
+                        @Html.ActionLink("下一页", "Index", "Process", new { copPageNo = (int)ViewBag.NextPageNo, pageSize = ViewBag.PageSizes }, null)
+                        @Html.ActionLink("尾页", "Index", new { copPageNo = (int)ViewBag.PageCount, pageSize = ViewBag.PageSizes })
+                    </div>
+                    <div style="display:inline-block;float:right">
+                        @Html.DropDownList("copPageNo", (SelectList)ViewBag.Pagelist)<input type="button" value="Go" onclick="GoPagelist()" />
+                    </div>
+                }
+                @if (ViewBag.Search != "")
+                {
+                    <div style="display:inline-block;float:left">
+                        @Html.DropDownList("pageSizeSearch", (SelectList)ViewBag.PageSize)<input type="button" value="Go" onclick="GoPageSizeSearch()" />
+                    </div>
+
+                    <div style="margin: 0 auto; text-align: right;">
+                        共<font color="red"> @ViewBag.PageCount </font>页，当前是第<font style="color:red"> @ViewBag.PageNo </font>页
+                        @Html.ActionLink("首页", "Index", new { copPageNo = 1, searchType = ViewBag.SearchType, search = ViewBag.Search, pageSize = ViewBag.PageSizes })
+                        @Html.ActionLink("上一页", "Index", "Process", new { copPageNo = (int)ViewBag.PageNo - 1, searchType = ViewBag.SearchType, search = ViewBag.Search, pageSize = ViewBag.PageSizes }, null)
+                        @Html.ActionLink("下一页", "Index", "Process", new { copPageNo = (int)ViewBag.NextPageNo, searchType = ViewBag.SearchType, search = ViewBag.Search, pageSize = ViewBag.PageSizes }, null)
+                        @Html.ActionLink("尾页", "Index", new { copPageNo = (int)ViewBag.PageCount, searchType = ViewBag.SearchType, search = ViewBag.Search, pageSize = ViewBag.PageSizes })
+                    </div>
+                    <div style="display:inline-block;float:right">
+                        @Html.DropDownList("copPageNo", (SelectList)ViewBag.Pagelist)<input type="button" value="Go" onclick="GoPagelist()" />
+                    </div>
+                }
+            </div>
+            <div class="tab-pane" id="tab2">
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="searchbox">
+                                    <ul class="border1">
+                                        <li><a href="#" class="style3">零件号</a></li>
+                                        <li><a href="#">编制者</a></li>
+                                    </ul>
+                                    <div class="bodyss">
+                                        <p><input type="text" value="" id="partnoseach2" class="three" placeholder="零件号" /><button class="three1" onclick="PartnoSeach2()">搜索</button></p>
+                                        <p><input type="text" value="" id="userseach2" class="four" placeholder="编制者" /><button class="four2" onclick="UserSeach2()">搜索</button></p>
+
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="selAll" onclick="swapCheck()" />
+                                <button style="padding: 2px 6px 0 6px; font-size: 10px" class="btn btn-primary" onclick="croImportProcesses()">批量导出EXCEL</button>
+                            </th>
+                            <th class="text-center">工艺规程编号</th>
+                            <th class="text-center">版本</th>
+                            <th class="text-center">零件号</th>
+                            <th class="text-center">零件名称</th>
+                            <th class="text-center">编制者</th>
+                            <th class="text-center">审核状态</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">导入时间</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                            @*<th class="text-center"><button id="checkMessageWords" type="submit" style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="CheckMessageWords()">剔除特殊字符</button></th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.list2 != null)
+                        {
+                            foreach (Process pro in ViewBag.list2)
+                            {
+                        <tr>
+                            <td><input type="checkbox" name="croProcessId" value="@pro.Id" /></td>
+                            <td>@Html.ActionLink(pro.No, "Creating", "Process", new { id = pro.Id }, null)</td>
+                            <td>@pro.VersionString</td>
+                            <td>@pro.PartNo</td>
+                            <td>@pro.PartName</td>
+                            <td>@pro.Author</td>
+                            <td><a href="#" onclick="DisPlayApprovalState(@pro.Id)">@(pro.ApprovalState)</a> </td>
+                            <td>
+                                <button @(pro.ApprovalState != ApprovalState.未提交审核 ? "" : "disabled=disabled")
+                                        style="padding: 2px 6px;font-size: 12px"
+                                        class="@("btn btn-primary"+(pro.ApprovalState != ApprovalState.未提交审核?"":"disabled"))"
+                                        onclick="appeditUser('@pro.Id')">
+                                    修改审核状态
+                                </button>
+                            </td>
+                            <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="editUser('@pro.Id')">修改编制者</button></td>
+                            <td>@pro.excelImportTime</td>
+                            <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="importProcess('@pro.Id')">导出EXCEL</button></td>
+                            <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-danger" onclick="delPro('@pro.Id')">删除</button></td>
+                        </tr>
+                                <div id="@("editUser-pro" + pro.Id)" title="编辑编制者" style="display: none">
+
+                                    <div class="text-center">
+
+                                        <div style="display: inline-block">
+                                            @using (Ajax.BeginForm("EditProcessUser", new { creId = pro.Id }, new AjaxOptions { OnSuccess = "EditProcess" }))
+                                            {
+                                                if (pro.Author != null)
+                                                {
+                                                    <div style="text-align:center; padding: 20px ;">
+                                                        <span style="width: 30px; display: inline">原编制者</span>
+                                                        <span style="width: 200px;">@Html.TextBox("Author", pro.Author.Name, new { })</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="text-align:center; padding: 20px ;">
+                                                        <span style="width: 30px; display: inline">原编制者</span>
+                                                        <span style="width: 200px;">@Html.TextBox("Author", "", new { })</span>
+                                                    </div>
+                                                }
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <span style="width: 30px; display: inline">现编制者</span>
+                                                    <span style="width: 200px;">@Html.TextBox("nowUser")</span>
+                                                </div>
+
+
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <input class="btn btn-primary" type="submit" value="确认修改" />
+                                                    <button class="btn btn-info" onclick="$('#@("editUser-pro" + pro.Id)').dialog('close')">取消</button>
+                                                </div>
+                                            }
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div id="@("appbox" + pro.Id)" title="编辑审核人" style="display: none">
+
+                                    <div class="text-center">
+
+                                        <div style="display: inline-block">
+                                            @using (Ajax.BeginForm("EditApprove", new { pid = pro.Id }, new AjaxOptions { OnSuccess = "EditProcess" }))
+                                            {
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <span style="width: 30px; display: inline">现校对人</span>
+                                                    <span style="width: 200px;">@Html.TextBox("ProoferId")</span>
+                                                </div>
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <span style="width: 30px; display: inline">现审核人</span>
+                                                    <span style="width: 200px;">@Html.TextBox("ApproverId")</span>
+                                                </div>
+
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <input class="btn btn-primary" type="submit" value="确认修改" />
+                                                    <button class="btn btn-info" onclick="$('#@("appbox" + pro.Id)').dialog('close')">取消</button>
+                                                </div>
+                                            }
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div id="@("delete-pro" + pro.Id)" style="display: none">
+
+                                    <div class="text-center">
+                                        <div style="display: inline-block">
+                                            @using (Ajax.BeginForm("DeleteProcess", new { id = pro.Id }, new AjaxOptions { OnSuccess = "onGenParam(data, " + 2 + ")" }))
+                                            {
+
+                                                <input id="confirmDelete" class="btn btn-primary" type="submit" value="确认删除" />
+                                            }
+                                        </div>
+                                        <button class="btn btn-info" onclick="$('#@("delete-pro" + pro.Id)').dialog('close')">取消</button>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div style="display:inline-block;float:left">
+                    @Html.DropDownList("pageSizes", (SelectList)ViewBag.PageSize)<input type="button" value="Go" onclick="CroGoPageSize()" />
+                </div>
+                <div style="margin: 0 auto; text-align: right;">
+
+                    共<font color="red"> @ViewBag.PageCount2 </font>页，当前是第<font style="color:red"> @ViewBag.PageNo2 </font>页
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="First('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">首页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="Up('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">上一页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="Down('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">下一页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="Last('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">尾页</button>
+
+                </div>
+                <div style="display:inline-block;float:right">
+                    @Html.DropDownList("croPageNo", (SelectList)ViewBag.Pagelist2)<input type="button" value="Go" onclick="CroGoPagelist()" />
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="searchbox">
+                                    <ul class="border1">
+                                        <li><a href="#" class="style3">零件号</a></li>
+                                        <li><a href="#">编制者</a></li>
+                                    </ul>
+                                    <div class="bodysss">
+                                        <p><input type="text" value="" id="revisePartnoseach2" class="five" placeholder="零件号" /><button class="five1" onclick="RevisePartnoSeach2()">搜索</button></p>
+                                        <p><input type="text" value="" id="reviseUserseach2" class="sex" placeholder="编制者" /><button class="sex1" onclick="ReviseUserSeach2()">搜索</button></p>
+
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">工艺规程编号</th>
+                            <th class="text-center">版本</th>
+                            <th class="text-center">零件号</th>
+                            <th class="text-center">零件名称</th>
+                            <th class="text-center">编制者</th>
+                            <th class="text-center">审核状态</th>
+                            <th class="text-center">操作</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.list2 != null)
+                        {
+                            foreach (Process pro in ViewBag.list2)
+                            {
+                                <tr>
+                                    <td>@Html.ActionLink(pro.No, "Creating", "Process", new { id = pro.Id }, null)</td>
+                                    <td>@pro.VersionString</td>
+                                    <td>@pro.PartNo</td>
+                                    <td>@pro.PartName</td>
+                                    <td>@pro.Author</td>
+                                    <td><a href="#" onclick="DisPlayApprovalState(@pro.Id)">@(pro.ApprovalState)</a> </td>
+                                    <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="editUser('@pro.Id')">修改编制者</button></td>
+                                    <td><button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-danger" onclick="delPro('@pro.Id')">删除</button></td>
+                                </tr>
+                                <div id="@("editUser-pros" + pro.Id)" title="编辑编制者" style="display: none">
+                                  
+                                    <div class="text-center">
+
+                                        <div style="display: inline-block">
+                                            @using (Ajax.BeginForm("EditProcessUser", new { creId = pro.Id }, new AjaxOptions { OnSuccess = "EditProcess" }))
+                                            {
+                                                if (pro.Author != null)
+                                                {
+                                                    <div style="text-align:center; padding: 20px ;">
+                                                        <span style="width: 30px; display: inline">原编制者</span>
+                                                        <span style="width: 200px;">@Html.TextBox("Author", pro.Author.Name, new { @readonly = "readonly" })</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="text-align:center; padding: 20px ;">
+                                                        <span style="width: 30px; display: inline">原编制者</span>
+                                                        <span style="width: 200px;">@Html.TextBox("Author", "", new { @readonly = "readonly" })</span>
+                                                    </div>
+                                                }
+
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <span style="width: 30px; display: inline">现编制者</span>
+                                                    <span style="width: 200px;">@Html.TextBox("nowUser")</span>
+                                                </div>
+                                                <div style="text-align: center; padding: 20px ;">
+                                                    <input class="btn btn-primary" type="submit" value="确认修改" />
+                                                    <button class="btn btn-info" onclick="$('#@("" + pro.Id)').dialog('close')">取消</button>
+                                                </div>
+                                            }
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div id="@("delete-pros" + pro.Id)" style="display: none">
+                                    <div style="margin: 20px; font-size: 15px;">
+                                        <label><input id="@("checker-box"+pro.Id)" onclick="DeleteProcess('@pro.Id')" type="checkbox">确定删除</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <div style="display: inline-block">
+                                            @using (Ajax.BeginForm("DeleteProcess", new { id = pro.Id }, new AjaxOptions { OnSuccess = "onGenParam(data, " + 2 + ")" }))
+                                            {
+                                                <input id="delete-prid" type="hidden" name="proNo" value="10" />
+                                                <input id="confirmDelete" disabled="disabled" class="btn btn-primary" type="submit" value="确认删除" />
+                                            }
+                                        </div>
+                                        <button class="btn btn-info" onclick="$('#@("delete-pro" + pro.Id)').dialog('close')">取消</button>
+
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div style="display:inline-block;float:left">
+                    @Html.DropDownList("revisePageSize", (SelectList)ViewBag.PageSize)<input type="button" value="Go" onclick="ReviseCroGoPageSize()" />
+                </div>
+                <div style="margin: 0 auto; text-align: right;">
+
+                    共<font color="red"> @ViewBag.PageCount2 </font>页，当前是第<font style="color:red"> @ViewBag.PageNo2 </font>页
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="ReviseFirst('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">首页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="ReviseUp('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">上一页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="ReviseDown('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">下一页</button>
+                    <button style="padding: 2px 6px 0 6px; font-size: 13px" class="btn success" onclick="ReviseLast('@ViewBag.SearchType','@ViewBag.Search','@ViewBag.PageSizes')">尾页</button>
+
+                </div>
+                <div style="display:inline-block;float:right">
+                    @Html.DropDownList("croPageNo", (SelectList)ViewBag.Pagelist2)<input type="button" value="Go" onclick="CroGoPagelist()" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center" style="margin-bottom: 20px;">
+        @Html.ActionLink("创建工艺规程", "Create", "Process", null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+<div id="box" title="审核状态" style="text-align: center; padding: 20px ;display: none">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">校对人</th>
+                <td>
+                    <a id="links" style="color: blue"></a>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">审核人</th>
+                <td>
+                    <a id="link" style="color: blue "></a>
+                </td>
+            </tr>
+            <tr>
+                <th class="text-center">审核状态</th>
+                <td>
+                    正在等待<a id="linkPeople" style="color: blue "></a>审核
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div id="boxs" title="审核状态" style="text-align: center; padding: 20px ;display: none">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th class="text-center">请先提交审核！</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts {
+
+    <link href="~/Content/process.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+        var publishs = false;
+
+        function publishProcess(id) {
+            $.ajax({
+                url: "@Url.Action("Publish")",
+                type: "post",
+                data: { id: id },
+                error: function() {},
+                success: function(data) {
+                    //alert(JSON.stringify(data));
+                    alert("发布成功");
+                    reload();
+                }
+            });
+        }
+        //DisPlayApprovalState
+        function DisPlayApprovalState(id) {
+                $.ajax({
+                    url: "@Url.Action("DisPlayApprovalState")",
+                    type: "post",
+                    data: { id: id },
+                    error: function() {},
+                    success: function (data) {
+                        if (data.succeed) {
+                            $("#link")[0].innerText = data.approverName;
+                            $("#links")[0].innerText = data.prooferName;
+                            $("#linkPeople")[0].innerText = data.currenterName;
+                            $("#box").dialog({ width: "300px", modal: true });
+                        } else {
+
+                            $("#boxs").dialog({ width: "200px", modal: true });
+                        }
+
+                    }
+                });
+            }
+        function ShowApprovalState() {
+            $("#ShowApprovalState").dialog({ width: "300px" });
+        }
+        activeTab(3);
+
+        function First(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("Index", new { crtPageNo = 1 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#2';
+        }
+        function Up(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("Index", new { crtPageNo = (int)ViewBag.PrevPageNo2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#2';
+            }
+        function Down(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("Index", new { crtPageNo = (int)ViewBag.NextPageNo2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#2';
+        }
+        function Last(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("Index", new { crtPageNo = (int)ViewBag.PageCount2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#2';
+        }
+        function ReviseFirst(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("ReviseIndex", new { crtPageNo = 1 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#3';
+        }
+        function ReviseUp(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("ReviseIndex", new { crtPageNo = (int)ViewBag.PrevPageNo2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#3';
+            }
+        function ReviseDown(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("ReviseIndex", new { crtPageNo = (int)ViewBag.NextPageNo2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#3';
+        }
+        function ReviseLast(SearchType, Search, PageSize) {
+            location.href = '@Url.Action("ReviseIndex", new { crtPageNo = (int)ViewBag.PageCount2 })' + '&' + 'searchType' + '=' + SearchType + '&' + 'search' + '=' + Search + '&' + 'pageSize' + '=' + PageSize + '#3';
+        }
+
+    function postMethed() {
+            $("#PageNo").change(function () {
+                var opt = $("#PageNo").val();
+                alert(opt)
+            });
+
+    }
+    function delPro(no) {
+
+        $("#delete-pro" + no).dialog({ width: "300px", modal: true });
+        $("#delete-prid").val(no);
+        }
+        function delPros(no) {
+
+            $("#delete-pros" + no).dialog({ width: "300px", modal: true });
+            $("#delete-prids").val(no);
+        }
+    function DeleteProcess(no) {
+        $("#checker-box" + no).change(function () {
+            var diss = $("input#confirmDelete");
+            if (this.checked) {
+                diss.removeClass("disabled");
+                diss.removeAttr("disabled");
+            } else {
+                diss.addClass("disabled");
+                diss.attr("disabled", "disabled");
+            }
+        });
+    }
+    function onGenParam(data, tblidx) {
+        if (data.succeed) {
+            alert("删除成功！");
+            reload(tblidx);
+        } else if (data.succeed === false) {
+            alert(data.error);
+            reload(tblidx);
+        }
+        }
+    $(function () {
+            $(".bodys p").not(":first").hide();
+            $(".searchbox ul li").mouseover(function () {
+                var index = $(this).index();
+                if (index == 0) {
+                    $(this).find("a").addClass("style1");
+                    $("li").eq(1).find("a").removeClass("style2");
+                }
+                if (index == 1) {
+                    $(this).find("a").addClass("style2");
+                    $("li").eq(0).find("a").removeClass("style1");
+                }
+                var index = $(this).index();
+                $(".bodys p").eq(index).show().siblings().hide();
+            });
+    });
+    $(function () {
+            $(".bodyss p").not(":first").hide();
+            $(".searchbox ul li").mouseover(function () {
+                var index = $(this).index();
+                if (index == 0) {
+                    $(this).find("a").addClass("style3");
+                    $("li").eq(1).find("a").removeClass("style2");
+                }
+                if (index == 1) {
+                    $(this).find("a").addClass("style2");
+                    $("li").eq(0).find("a").removeClass("style3");
+                }
+                var index = $(this).index();
+                $(".bodyss p").eq(index).show().siblings().hide();
+            });
+        });
+        $(function () {
+            $(".bodysss p").not(":first").hide();
+            $(".searchbox ul li").mouseover(function () {
+                var index = $(this).index();
+                if (index == 0) {
+                    $(this).find("a").addClass("style3");
+                    $("li").eq(1).find("a").removeClass("style2");
+                }
+                if (index == 1) {
+                    $(this).find("a").addClass("style2");
+                    $("li").eq(0).find("a").removeClass("style3");
+                }
+                var index = $(this).index();
+                $(".bodysss p").eq(index).show().siblings().hide();
+            });
+        });
+
+        function checkBox() {
+            publishs = true;
+        }
+        window.onload = onclickList;
+        function onclickList() {
+            var list = document.getElementsByTagName("li");
+            for (var i = 0; i < list.length; i++) {
+                list[i].onclick = (function (i) {
+                    return function () {
+                        if (list[i].innerText == "已发布") {
+
+                            location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.Publish, search = true }))";
+                        } if (list[i].innerText == "未发布") {
+
+                            location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.Publish, search = false }))";
+                        } if (list[i].innerText == "未选择") {
+
+                            location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo }))";
+                        }if (list[i].innerText == "已完成") {
+
+                            location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.Test, search = "已完成" }))";
+                        } if (list[i].innerText == "未完成") {
+
+                            location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.Test, search = "未完成" }))";
+                        }
+
+                    }
+                }(i))
+            }
+        }
+        function test() {
+
+            var test = document.getElementById("test");
+            if (test.checked == true) {
+                checkBox();
+            }
+            if (publishs) {
+                if (test.checked == true) {
+                    location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageCount2, searchType = ViewBag.Test, search = true }))";
+                }
+            } else {
+                if (test.checked == true) {
+                    location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageCount2, searchType = ViewBag.Test, search = false }))";
+                }
+            }
+            publishs = true;
+
+        }
+
+
+        function publish() {
+            var publish = document.getElementById("publish");
+            if (publishs) {
+                if (publish.checked == true) {
+                    location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageCount2, searchType = ViewBag.Publish, search = true }))";
+                 }
+            } else {
+                  if (publish.checked == true) {
+                      location.href = "@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageCount2, searchType = ViewBag.Publish, search =false }))";
+                 }
+            }
+            publishs = true;
+        }
+        function UserSeach() {
+            var userseach = document.getElementById("userseach").value;
+            location.href = '@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.Author }))' + '&' +'search'+'='+ userseach;
+        }
+        function PartnoSeach() {
+
+            var partnoseach = document.getElementById("partnoseach").value;
+            location.href = '@Html.Raw(Url.Action("Index", new { copPageNo = (int)ViewBag.PageNo, searchType = ViewBag.PartNo }))' + '&' + 'search' + '=' + partnoseach;
+        }
+         function UserSeach2() {
+            var userseach = document.getElementById("userseach2").value;
+             location.href = '@Html.Raw(Url.Action("Index", new { crtPageNo = (int)ViewBag.PageNo2, searchType = ViewBag.Author }))' + '&' + 'search' + '=' + userseach + '#2';
+        }
+         function ReviseUserSeach2() {
+             var userseach = document.getElementById("reviseUserseach2").value;
+             location.href = '@Html.Raw(Url.Action("ReviseIndex", new { crtPageNo = (int)ViewBag.PageNo2, searchType = ViewBag.Author }))' + '&' + 'search' + '=' + userseach + '#3';
+        }
+        function PartnoSeach2() {
+            var partnoseach = document.getElementById("partnoseach2").value;
+            location.href = '@Html.Raw(Url.Action("Index", new { crtPageNo = (int)ViewBag.PageNo2, searchType = ViewBag.PartNo }))' + '&' + 'search' + '=' + partnoseach + '#2';
+         }
+        function RevisePartnoSeach2() {
+            var partnoseach = document.getElementById("revisePartnoseach2").value;
+            location.href = '@Html.Raw(Url.Action("ReviseIndex", new { crtPageNo = (int)ViewBag.PageNo2, searchType = ViewBag.PartNo }))' + '&' + 'search' + '=' + partnoseach + '#3';
+        }
+        function GoPagelist() {
+            var myselect = document.getElementById("copPageNo");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("Index"))' + '?'+'copPageNo' + '=' + indexs;
+        }
+        function GoPageSize() {
+            var myselect = document.getElementById("pageSize");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("Index"))' + '?' +'pageSize' + '=' + indexs;
+        }
+
+        function GoPageSizeSearch() {
+            var myselect = document.getElementById("pageSizeSearch");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("Index"))' + '?' +'pageSize' + '=' + indexs;
+        }
+        function CroGoPagelist() {
+            var myselect = document.getElementById("croPageNo");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("Index"))' + '?' + 'crtPageNo' + '=' + indexs + '#2';
+        }
+        function CroGoPageSize() {
+            var myselect = document.getElementById("pageSizes");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("Index"))' + '?' + 'pageSize' + '=' + indexs + '#2';
+        }
+        function ReviseCroGoPageSize() {
+            var myselect = document.getElementById("revisePageSize");
+            var index = myselect.selectedIndex;
+            var indexs = myselect.options[index].value;
+
+            location.href = '@Html.Raw(Url.Action("ReviseIndex"))' + '?' + 'pageSize' + '=' + indexs + '#3';
+        }
+        function editUser(no) {
+
+            $("#editUser-pro" + no).dialog({ width: "400px", modal: true });
+            $("#editUser-prid").val(no);
+            var nowUser = document.getElementsByName("#nowUser" + no);
+
+        }
+        function editUsers(no) {
+
+            $("#editUsers-pro" + no).dialog({ width: "400px", modal: true });
+            $("#editUsers-prid").val(no);
+            var nowUser = document.getElementsByName("#nowUser" + no);
+
+        }
+        function EditProcessUser(no) {
+            $("#checker-box" + no).change(function () {
+                var diss = $("input#confirmEdit");
+                if (this.checked) {
+                    diss.removeClass("disabled");
+                    diss.removeAttr("disabled");
+                } else {
+                    diss.addClass("disabled");
+                    diss.attr("disabled", "disabled");
+                }
+            });
+        }
+        function EditProcess(data) {
+            if (data.succeed) {
+                alert("修改成功！");
+                if (data.type) {
+                    reload(1);
+                } else {
+                    reload(2);
+                }
+
+            } else if (data.succeed === false) {
+                alert(data.error);
+                reload(1);
+            }
+        }
+        $(function () {
+
+            var s_title = $(".select_box span");
+
+            var s_select = $(".select_box li");
+
+
+
+            s_title.click(function (e) {
+
+                $(this).addClass("span_aa");
+
+                $(this).next("ul").show();
+
+                e.stopPropagation();
+
+            });
+
+
+
+            s_select.click(function () {
+
+                var s_text = $(this).html();
+
+                var s_title_2 = $(this).parent('ul').prev("span");
+
+                s_title_2.html(s_text).removeClass("span_aa");
+
+                $(this).parent('ul').hide();
+
+            });
+
+
+
+            $(document).click(function () {
+
+                s_title.removeClass("span_aa");
+
+                $(".select_box ul").hide();
+
+            });
+
+
+
+        });
+
+        function Revise() {
+            var indexs = 10;
+            location.href = '@Html.Raw(Url.Action("ReviseIndex"))' + '?' + 'pageSize' + '=' + indexs + '#3';
+        }
+        //checkbox 全选/取消全选
+        var isCheckAll = false;
+        function swapCheck() {
+            if (isCheckAll) {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                isCheckAll = false;
+            } else {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = true;
+                });
+                isCheckAll = true;
+            }
+        }
+        function importProcess(id) {
+            var processIds = id;
+
+            var w = window.open();
+            var processIdes = processIds + ",";
+            w.location.href = '@Url.Action("ImportProcesses")' + '?' + 'processIdes' + '=' + processIdes;
+        }
+        function importProcesses() {
+            var id = document.getElementsByName("processId");
+            var value = new Array();
+            for (var i = 0; i < id.length; i++) {
+                if (id[i].checked)
+                    value.push(id[i].value);
+            }
+            var w = window.open();
+            var userId = "";
+            for (var i = 0; i < value.length; i++) {
+                userId += value[i] + ",";
+            }
+            var userIds = userId.lastIndexOf(",");
+            var processIdes = userId.substring(0, userIds);
+             w.location.href = '@Url.Action("ImportProcesses")' + '?' + 'processIdes' + '=' + processIdes;
+
+        }
+        function croImportProcesses() {
+            var id = document.getElementsByName("croProcessId");
+            var value = new Array();
+            for (var i = 0; i < id.length; i++) {
+                if (id[i].checked)
+                    value.push(id[i].value);
+            }
+            var w = window.open();
+            var userId = "";
+            for (var i = 0; i < value.length; i++) {
+                userId += value[i] + ",";
+            }
+            var userIds = userId.lastIndexOf(",");
+            var processIdes = userId.substring(0, userIds);
+             w.location.href = '@Url.Action("ImportProcesses")' + '?' + 'processIdes' + '=' + processIdes;
+
+        }
+            function appeditUser(id) {
+                $("#appbox"+id).dialog({ width: "400px", modal: true });
+        }
+            function CheckMessage() {
+                var w = window.open();
+                w.location.href = '@Html.Raw(Url.Action("CheckMessage"))';
+            }
+        function CheckMessageNoneUse() {
+            $("#checkMessage").ajaxSubmit({
+                url: "@Url.Action("CheckMessage")",
+                type: "post",
+                resetForm:true,
+                success: function(data) {
+                    //data = JSON.parse(data);
+                    if (data.succeed) {
+                        if (data.datalist.length != 0) {
+                            var textstring = "";
+                            for (var i = 0; i < 50; i++) {
+                                textstring += data.datalist[i] + "|";
+                            }
+                            alert(textstring);
+                            var w = window.open();
+                            var newList = data.datalist;
+                            w.location.href = '@Url.Action("checkM")' + '?' + 'newList' + '=' + newList;
+                        } else {
+                            alert("暂无修正数据");
+                        }
+
+                    }else {
+                       alert("出现错误");
+                    }
+                },
+                error: function(err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+
+            //不返回false会再进行一次非AJAX提交
+            return false;
+            }
+        function CheckMessageWords() {
+            $("#checkMessageWords").ajaxSubmit({
+                url: "@Url.Action("CheckMessageWords")",
+                type: "post",
+                resetForm:true,
+                success: function(data) {
+                    //data = JSON.parse(data);
+                    if (data.succeed) {
+                        alert("剔除特殊字符成功！");
+                    }else {
+                       alert("出现错误");
+                    }
+                },
+                error: function(err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+
+            //不返回false会再进行一次非AJAX提交
+            return false;
+        }
+    </script>
+}

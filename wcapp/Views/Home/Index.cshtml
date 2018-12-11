@@ -1,0 +1,62 @@
+﻿@model WCAPP.Models.HomeModels.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+<div style="width: 500px; height: 400px; border: 2px solid #333; position: fixed; top: 50%; left: 50%; margin-left: -250px; margin-top: -300px;">
+    <div style="text-align: center; color: #3E5090">
+        <h2>欢迎使用WCAPP</h2>
+    </div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {id = "form_logon"}))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <table align="center" style="width: 300px; margin-top: 80px;border:none">
+            <tr>
+                <td>
+                    <span style="width: 60px; display: inline-block">用户名</span>@Html.TextBoxFor(m => m.UserId, new {@class = "text", placeholder = "用户名"})</td>
+            </tr>
+            <tr>
+                <td style="font-size: 14px">&nbsp;@Html.ValidationMessageFor(m => m.UserId, "请输入用户名", new {style = "font-size:14px;color:red"})</td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="width: 60px; display: inline-block">密&nbsp; &nbsp;码</span>@Html.PasswordFor(m => m.Password0, new {@class = "text", placeholder = "密码", id = "pwd0"})</td>
+            </tr>
+            <tr>
+                <td>&nbsp;@Html.ValidationMessageFor(m => m.Password0, "请输入密码", new {style = "font-size:14px;color:red"})</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="进入系统" class="btn btn-default" style="width: 100%"/>
+                </td>
+            </tr>
+        </table>
+        @Html.HiddenFor(m => m.Password, new {id = "pwd"})
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script>
+    $(function() {
+        $("#form_logon").submit(function() {
+            $("#pwd").val(hex_md5($("#pwd0").val()));
+            $("#pwd0").attr("disabled", "true");
+            return true;
+        });
+    });
+</script>
+</body>
+</html>

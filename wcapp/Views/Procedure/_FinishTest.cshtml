@@ -1,0 +1,132 @@
+﻿@model WCAPP.Models.ProcedureModels.FinishTestModel
+
+@{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    var style = new { style = "font-size:14px;color:red" };
+    @Html.ValidationMessage("Error", style)
+
+    <table style=" border: none; margin-left: 20px;margin-top: 20px; z-index: 9; position: relative;">
+        <tr>
+
+
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">操作者</span> @Html.TextBoxFor(m => m.Welder, new { id = "welder" })
+            </td>
+
+
+            <td><a style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="selectUserWelder()">选择操作者</a></td>
+        </tr>
+        <tr>
+            <td><span>@Html.ValidationMessageFor(m => m.Welder, "请输入焊缝编号", style)</span></td>
+        </tr>
+        <tr>
+
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">检验者</span>  @Html.TextBoxFor(m => m.Checker, new { id = "checker" })
+            </td>
+
+            <td><a style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="selectUserChecker()">选择检验者</a></td>
+        </tr>
+        <tr>
+            <td><span>@Html.ValidationMessageFor(m => m.Checker, "请输入检验者", style)</span></td>
+        </tr>
+
+        <tr>
+            <td style="padding: 8px">
+                <span style="width: 105px; display: inline-block">确认报告编号</span>@Html.TextBoxFor(m => m.ReportNo)
+
+            </td>
+        </tr>
+        <tr>
+            <td> <span>@Html.ValidationMessageFor(m => m.ReportNo, "请输入确认报告编号", style)</span></td>
+        </tr>
+        <tr>
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">检验报告</span>
+            </td>
+
+        </tr>
+        <tr>
+            <td><span style="float:right"><input type="file" id="fileId" name="file" accept="application/pdf"></span></td>
+        </tr>
+        <tr>
+            <td><span>@Html.ValidationMessageFor(m => m.Checker, "请输入检验者", style)</span></td>
+        </tr>
+        <tr style="padding: 8px">
+            <td style="text-align: center">
+                <input type="submit" value="完成试焊" class="btn btn-primary">
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="sid" value="@ViewBag.SID" />
+   
+
+    @*<div style="width: auto">
+            <input type="submit" value="完成试焊" class="btn btn-primary">
+        </div>*@
+
+    @*<div class="text-center">*@
+    @*<div style="display: inline-block">
+            <div style="text-align:center; padding: 20px ;">
+                <span style="width: 30px; display: inline">操作者</span>
+                <span style="width: 200px;">@Html.TextBox("welder", new { id = "welder" })</span>
+                <a style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="selectUserWelder()">选择操作者</a>
+            </div>
+            <div style="text-align: center; padding: 20px ;">
+                <span style="width: 30px; display: inline">检验者</span>
+                <span style="width: 200px;"> @Html.TextBox("checker", new { id = "checker" })</span>
+                <a style="padding: 2px 6px 0 6px; font-size: 13px" class="btn btn-primary" onclick="selectUserChecker()">选择检验者</a>
+            </div>
+            <div style="padding: 20px ;">
+                <span style="width: 10px; display: inline">确认报告编号</span>
+                <span style="width: 100px;"> @Html.TextBox("reportNo")</span>
+            </div>
+        </div>*@
+    @*<span style="width: 100px; display: inline-block"> 检验报告</span>
+            <div style="padding: 10px">
+                <span style="width: 100px; display: inline-block"><input type="file" id="fileId" name="file" accept="application/pdf"></span>
+            </div>
+
+            <input type="hidden" name="sid" value="@ViewBag.SID" />
+
+            <div style="padding: 10px;float:left">
+                <input type="submit" value="完成试焊" class="btn btn-primary">
+            </div>
+
+        </div>*@
+
+
+    <div id="select-User" title="选择操作人员" style="display: none">
+
+        <div class="text-center">
+
+            <div style="display: inline-block">
+
+                @*<span style="width: 105px; display: inline-block">关键字：</span><input type="text" id="keyWord" onchange="KeyWord(this)" />*@
+                <span style="width: 100px;display: inline-block">检验者</span>@Html.DropDownListFor(m => m.Checker, (SelectList)ViewBag.Oerators, new { id = "selectWelder" })
+
+                <a style="padding: 2px 6px 0 6px; font-size: 16px" class="btn btn-primary" onclick="selectUserWelderName()">确认</a>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="select-Checker" title="选择检验人员" style="display: none">
+
+        <div class="text-center">
+
+            <div style="display: inline-block">
+
+
+                <span style="width: 100px; display: inline-block">检验者</span>@Html.DropDownListFor(m => m.Checker, (SelectList)ViewBag.Oerators, new { id = "selectChecker" })
+
+                <a style="padding: 2px 6px 0 6px; font-size: 16px" class="btn btn-primary" onclick="selectUserCheckerName()">确认</a>
+
+            </div>
+
+        </div>
+    </div>
+}
+

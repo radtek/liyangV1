@@ -1,0 +1,428 @@
+﻿@using WCAPP.Models.Database
+@using WCAPP.Types
+@using WCAPP.Utils
+@{
+    Procedure procedure = ViewBag.Procedure;
+    var process = procedure.Process;
+    bool editadle = ViewBag.Editable;
+}
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a style="font-size: 16px" data-toggle="tab">创建中工序信息</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <div class="content">
+                <div class="row" style="padding: 20px 60px 0 0;">
+                    <div class="row" style="padding: 20px 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            工艺规程编号：@process.No
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            零件号：@process.PartNo
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            工序号：@procedure.No
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0px 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            零件名称：@process.PartName
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            工序名称：@procedure.Name
+                        </div>
+                        <div class="col-md-4 col-xs-4">
+                            焊接方法：@procedure.WeldMethod
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0 60px 20px;">
+                        <div class="col-md-4 col-xs-4">
+                            焊接类型：@procedure.WeldType
+                        </div>
+                        @if (procedure.WeldMethod == WeldMethod.电阻焊)
+                        {
+                            <div class="col-md-4 col-xs-4">
+                                焊接方式：@procedure.ResistType
+                            </div>
+                        }
+                        else if (procedure.WeldMethod == WeldMethod.氩弧焊)
+                        {
+                            <div class="col-md-4 col-xs-4">
+                                自动化程度：@procedure.AutoLevel
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                @if (ViewBag.Editable)
+                {
+                <div class="text-center">
+                    <a class="btn btn-primary" onclick="backs(@ViewBag.ProcessId)">返回上一级</a>
+                    <a class="btn btn-primary" onclick="showPopup()">添加焊缝</a>
+                </div>
+                }
+
+                <div id="add-seam" title="请填写焊缝信息" style="display: none">
+
+                    @using (Ajax.BeginForm("AddSeam", new { prid = procedure.Id }, new AjaxOptions { UpdateTargetId = "add_seam", OnSuccess = "onSimple(data, -1)" }, new { id = "add_seam" }))
+                    {
+                        if (procedure.WeldMethod == WeldMethod.电阻焊)
+                        {
+                                @Html.Action("AddSeam", new { IsResist = procedure.WeldMethod == WeldMethod.电阻焊, IsPoint = procedure.ResistType == ResistType.点焊 })
+                        }
+                        if (procedure.WeldMethod == WeldMethod.氩弧焊)
+                        {
+                        if (procedure.AutoLevel == AutoLevel.自动)
+                        {
+                                        @Html.Action("AddSeams", new { IsResist = procedure.WeldMethod == WeldMethod.氩弧焊, IsPoint = procedure.AutoLevel == AutoLevel.自动 })
+                        }
+                        if (procedure.AutoLevel == AutoLevel.手工)
+                        {
+                                        @Html.Action("AddSeams", new { IsResist = procedure.WeldMethod == WeldMethod.氩弧焊, IsPoint = procedure.AutoLevel == AutoLevel.手工})
+                        }
+
+                        }
+                        else if (procedure.WeldMethod == WeldMethod.电子束焊||procedure.WeldMethod == WeldMethod.高频钎焊)
+                        {
+                            @Html.Action("AddSeam", new { IsResist = false, IsPoint = false })
+                        }
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        @{
+            var tblidx = 1;
+
+            if (procedure != null)
+            {
+                foreach (var seam in procedure.Seams)
+                {
+                    <li id="@("tah" + tblidx)" @(tblidx == 1 ? "class=active" : "")>
+                        <a style="font-size: 16px" href="@("#tab" + tblidx)" data-toggle="tab">焊缝 @seam.No</a>
+                    </li>
+                    tblidx++;
+                }
+            }
+        }
+    </ul>
+    <div class="tab-content" style="padding-top: 20px">
+        @{
+            tblidx = 1;
+            if (procedure != null)
+            {
+                foreach (var seam in procedure.Seams)
+                {
+                    <div class="tab-pane @(tblidx == 1 ? "active" : "")" id="@("tab" + tblidx)">
+                        <div class="content">
+                            <table class="table table-striped table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">接头形式</th>
+                                        <th class="text-center">焊缝等级</th>
+                                        <th class="text-center">检验标准</th>
+                                        <th class="text-center">材料牌号1</th>
+                                        <th class="text-center">厚度1</th>
+                                        <th class="text-center">材料牌号2</th>
+                                        <th class="text-center">厚度2</th>
+                                        @if (procedure.WeldMethod == WeldMethod.电阻焊)
+                {
+                        <th class="text-center">焊机型别</th>
+                        <th class="text-center">@(procedure.ResistType == ResistType.点焊 ? "电极直径" : "滚轮宽度")</th>
+}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@seam.JointForm</td>
+                                        <td>@seam.SeamLevel</td>
+                                        <td>@seam.CheckStandard</td>
+                                        <td>@seam.Material1</td>
+                                        <td>@seam.Thick1</td>
+                                        <td>@seam.Material2</td>
+                                        <td>@seam.Thick2</td>
+                                        @if (procedure.WeldMethod == WeldMethod.电阻焊)
+                {
+                        <td>@seam.WeldMachineClass</td>
+                        <td>@seam.ElectrodeDiameter</td>
+}
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @{
+        var paramDict = new Dictionary<WeldParam, string>();
+        if (seam.InitialParams.Any())
+        {
+            foreach (var param in seam.InitialParams)
+            {
+                paramDict.Add(param.Enum, param.Value);
+            }
+                        <table class="table table-striped table-hover text-center" style="margin: 30px 0">
+                            @if (procedure.WeldMethod == WeldMethod.氩弧焊)
+    {
+                        <thead>
+                            <tr>
+                                <th class="text-center">焊接电流(A)</th>
+                                <th class="text-center">焊接速度(m/min)</th>
+                                <th class="text-center">焊料牌号</th>
+                                <th class="text-center">焊料规格</th>
+                                <th class="text-center">氩气流量正面(L/min)</th>
+                                <th class="text-center">氩气流量反面(L/min)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接电流)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接速度)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.填充材料牌号)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.填充材料规格)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.氩气流量正面)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.氩气流量反面)</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="text-center">电流衰减(s)</th>
+                                <th class="text-center">保护气滞后(m/s)</th>
+                                <th class="text-center">送丝速度(m/min)</th>
+                                <th class="text-center">钨极直径(mm)</th>
+                                <th class="text-center">喷嘴直径(mm)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.电流衰减)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.保护气滞后)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.送丝速度)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.钨极直径)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.喷嘴直径)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+}
+                        </table>
+                        <table class="table table-striped table-hover text-center" style="margin: 30px 0">
+                            @if (procedure.WeldMethod == WeldMethod.电子束焊)
+    {
+                        <thead>
+                            <tr>
+                                <th class="text-center">功率</th>
+                                <th class="text-center">加速电压(kV)</th>
+                                <th class="text-center">电子束流(mA)</th>
+                                <th class="text-center">焊接速度(mm/min)</th>
+                                <th class="text-center">聚焦电流(mA)</th>
+                                <th class="text-center">工作距离(mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.功率)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.加速电压)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.电子束流)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接速度)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.聚焦电流)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.工作距离)</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="text-center">束流斜率控制上升(S)</th>
+                                <th class="text-center">束流斜率控制下降(S)</th>
+                                <th class="text-center">焊接真空度(Pa)</th>
+                                <th class="text-center">电子束扫描偏转波形</th>
+                                <th class="text-center">电子束扫描偏转幅值</th>
+                                <th class="text-center">电子束扫描偏转频率</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.上升)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.下降)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接真空度)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.波形)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.幅值)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.频率)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+}
+                        </table>
+                        <table class="table table-striped table-hover text-center" style="margin: 30px 0">
+                            @if (procedure.WeldMethod == WeldMethod.电阻焊)
+    {
+                        <thead>
+                            <tr>
+                                <th class="text-center">功率级数</th>
+                                <th class="text-center">预压(ms)</th>
+                                <th class="text-center">电极压力抬起(Kpa)</th>
+                                <th class="text-center">电极压力压下(Kpa)</th>
+                                <th class="text-center">脉冲1(ms)</th>
+                                <th class="text-center">焊接电流1(A)</th>
+                                <th class="text-center">冷却(ms)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.功率级数)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.预压)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.抬起)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.压下)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.脉冲1)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接电流1)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.冷却)</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="text-center">脉冲2(ms)</th>
+                                <th class="text-center">焊接电流2(A)</th>
+                                <th class="text-center">维持(ms)</th>
+                                <th class="text-center">休止(ms)</th>
+                                <th class="text-center">下气室气压(kPa)</th>
+                                <th class="text-center">中气室气压(kPa)</th>
+                                <th class="text-center">焊接速度(m/min)</th>
+                                <th class="text-center">熔核直径(mm)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.脉冲2)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接电流2)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.维持)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.休止)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.下气室气压)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.中气室气压)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接速度)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.熔核直径)</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+}
+                        </table>
+                        <table class="table table-striped table-hover text-center" style="margin: 30px 0">
+                            @if (procedure.WeldMethod == WeldMethod.高频钎焊)
+    {
+                        <thead>
+                            <tr>
+                                <th class="text-center">钎料牌号</th>
+                                <th class="text-center">填料规格(mm)</th>
+                                <th class="text-center">焊接电压(V)</th>
+                                <th class="text-center">氩气流量(L/min)</th>
+                                <th class="text-center">感应圈编号</th>
+                                <th class="text-center">管子规格(mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@paramDict.GetParamValue(WeldParam.钎料牌号)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.钎料规格)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.焊接电压)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.氩气流量)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.感应圈编号)</td>
+                                <td>@paramDict.GetParamValue(WeldParam.管子规格)</td>
+                            </tr>
+                        </tbody>
+}
+                        </table>
+if (ViewBag.Editable)
+{
+                        <div class="text-center">
+                            @*@Html.ActionLink("返回", "Index", "Process", null)*@
+                            @*@Html.Action("返回", "Process")*@
+                            @*<a class="btn btn-primary" onclick="back()">返回主页面</a>*@
+                            @*<a class="btn btn-primary" onclick="backs(@ViewBag.ProcessId)">返回上一级</a>*@
+                            <a class="btn btn-primary" onclick="showEditor(@seam.Id)">编辑焊接参数</a>
+                        </div>
+}
+}
+else
+{
+if (ViewBag.Editable)
+{
+using (Ajax.BeginForm("GenParam", new { sid = seam.Id }, new AjaxOptions { OnSuccess = "onGenParam(data, " + tblidx + ")" }))
+{
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-info">生成焊接参数</button>
+                        </div>
+}
+}
+}
+if (ViewBag.Editable)
+{
+                        <div id="@("editor" + seam.Id)" title="编辑焊缝" style="display: none; width: 500px">
+                            @using (Ajax.BeginForm("EditParam", new { sid = seam.Id }, new AjaxOptions { UpdateTargetId = "edit_param", OnSuccess = "onSimple(data, " + tblidx + ")" }, new { id = "edit_param" }))
+    {
+                        @Html.Action("EditParam", new { sid = seam.Id })
+}
+                        </div>
+}
+                            }
+                        </div>
+                    </div>
+                    tblidx++;
+                }
+            }
+        }
+    </div>
+</div>
+</div>
+
+<div id="tip" title="提示" style="display: none">由于数据有限，未能推导出参数，请手工填写</div>
+
+@section scripts {
+<script>
+        function showPopup() {
+            $("#add-seam").dialog({ width: "640px", modal: true });            
+        }
+
+        function showEditor(sid) {
+            $("#editor" + sid).dialog({ width: "640px", modal: true });
+        }
+
+        function onGenParam(data, tblidx) {
+            if (data.succeed) {
+                reload(tblidx);
+            } else if (data.succeed === false) {
+                $("#tip").dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    buttons: {
+                        "确定": function() {
+                            $(this).dialog("close");
+                        }
+                    },
+                    close: function() {
+                        $("#editor" + data.sid).dialog({ width: "640px", modal: true });
+                    }
+                });
+            } else if (data.error) {
+                alert(data.error);
+            }
+        }
+
+        $(function() {
+            activeTab(@procedure.Seams.Count);
+        });
+        @*function back() {
+            window.location.href = "@Url.Action("Index","Process")";
+        }*@
+        function backs(id) {
+            //alert(id);
+            window.location.href = '@Url.Action("Creating", "Process")'+'/'+ id;
+    }
+   
+   
+</script>
+}

@@ -1,0 +1,190 @@
+﻿@using WCAPP.Models.Database
+
+<div style="border: 1px solid #eee; padding: 10px;">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size:16px" href="#tab1" data-toggle="tab">摆渡导出中间表</a>
+            </li>
+            <li>
+                <a style="font-size: 16px" href="#tab2" data-toggle="tab">摆渡导入中间表</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <table class="table table-striped table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="text-left">
+                                    @using (Html.BeginForm("Index", "ERP", new { PageNo = ViewBag.PageNo }))
+                            {
+                                @:设备编号：@Html.TextBox("searchId")@*@Html.DropDownList("id", (SelectList)ViewBag.Pagelist)*@
+                                <input type="submit" value="检索" />
+                    }
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                </table>
+
+                @using (Ajax.BeginForm("ExportERP", "ERP", new AjaxOptions { HttpMethod = "POST", OnSuccess = "downloadERP" }))
+        {
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="checkbox" id="selAll" onclick="swapCheck()" />全选</th>
+                        <th class="text-center">设备编号</th>
+                        <th class="text-center">设备描述</th>
+                        <th class="text-center">设备型号</th>
+                        <th class="text-center">成本中心</th>
+                        <th class="text-center">成本中心描述</th>
+                        <th class="text-center">设备种类描述</th>
+                        <th class="text-center">设备大小细类描述</th>
+                        <th class="text-center">设备状态</th>                       
+                        <th class="text-center">摆渡导出时间</th>
+                        <th class="text-center">摆渡状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.ERP != null)
+            {
+                foreach (ERP erp in ViewBag.ERP)
+                {
+                    <tr>
+                        <td><input type="checkbox" name="erpId" value="@erp.ID" /></td>
+                        <td>@erp.ID</td>
+                        <td>@erp.Desce</td>
+                        <td>@erp.Type</td>
+                        <td>@erp.Kostl</td>
+                        <td>@erp.KoDesc</td>
+                        <td>@erp.TypeDesc</td>
+                        <td>@erp.Eartx</td>
+                        <td>@erp.State</td>                       
+                        <td>@erp.importTime</td>
+                        @if (erp.importState!=null&&erp.importState.Value==true)
+    {
+                    <td><div>已导出</div></td> }
+else
+{
+                    <td><div>未导出</div></td>
+}
+                    </tr>
+        }
+    }
+                </tbody>
+            </table>
+
+            <div style="margin: 0 auto; text-align: right;">
+                共<font color="red"> @ViewBag.PageCount </font>页，当前是第<font style="color:red"> @ViewBag.PageNo </font>页
+                @Html.ActionLink("首页", "Index", new { pageNo = 1, searchId = ViewBag.SearchId, pageSize = ViewBag.PageSizes })
+                @Html.ActionLink("上一页", "Index", "ERP", new { pageNo = (int)ViewBag.PageNo - 1, searchId = ViewBag.SearchId, pageSize = ViewBag.PageSizes }, null)
+                @Html.ActionLink("下一页", "Index", "ERP", new { pageNo = (int)ViewBag.NextPageNo, searchId = ViewBag.SearchId, pageSize = ViewBag.PageSizes }, null)
+                @Html.ActionLink("尾页", "Index", new { pageNo = (int)ViewBag.PageCount, searchId = ViewBag.SearchId, pageSize = ViewBag.PageSizes })
+            </div>
+
+
+            <div style="text-align:center">
+                <button type="submit" class="btn btn-primary">生成ERP文件</button>
+            </div>
+}
+                <div style="display:inline-block;float:left">
+                    @using (Html.BeginForm("Index", "ERP"))
+            {
+                @:页码：@Html.DropDownList("pageSize", (SelectList)ViewBag.PageSize)<input type="submit" value="Go" />
+}
+                </div>
+                <div style="display:inline-block;float:right">
+                    @using (Html.BeginForm("Index", "ERP"))
+            {
+                @:转到：@Html.DropDownList("pageNo", (SelectList)ViewBag.Pagelist)<input type="submit" value="Go" />
+}
+                </div>
+
+            </div>
+            <div class="tab-pane" id="tab2">
+                <form id="erp" method="post" onsubmit="return uploadERP()">
+                    <div>
+                        请选择ERP文件
+                        <div style="padding: 10px">
+                            <input type="file" name="file" />
+                        </div>
+                        <div style="padding: 10px;float:left">
+                            <input type="submit" class="btn btn-primary" value="导入" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="box" title="请点击链接下载ERP文件" style="text-align: center; padding: 20px">
+    <a id="link" style="color: red"></a>
+</div>
+
+@section scripts {
+    <script>
+
+            var checkFile = false;
+
+        function uploadERP() {
+            $("#erp").ajaxSubmit({
+                url: "@Url.Action("ImportERP")",
+                type: "post",
+                resetForm:true,
+                success: function(data) {
+                    data = JSON.parse(data);
+                    if (data.succeed) {
+                        alert("导入成功");
+                        window.location.href = "@Url.Action("Index", "ERP")";
+                    } else if (data.error) {
+                        alert(data.error);
+                    } else {
+                       alert("出现错误");
+                    }
+                },
+                error: function(err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+
+            //不返回false会再进行一次非AJAX提交
+            return false;
+        }
+
+        
+
+        function downloadERP(data) {
+            if (data.succeed) {
+                $("#link").attr("href", "/" + data.path);
+                $("#link")[0].innerText = data.name;
+                $("#box").dialog({ width: "600px", modal: true });
+               
+            }
+            if (data.error) {
+                alert(data.error);
+                reload();
+            }
+            }
+
+
+        //checkbox 全选/取消全选
+        var isCheckAll = false;
+        function swapCheck() {
+            if (isCheckAll) {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = false;
+                });
+                isCheckAll = false;
+            } else {
+                $("input[type='checkbox']").each(function () {
+                    this.checked = true;
+                });
+                isCheckAll = true;
+            }
+        }
+
+    </script>
+}

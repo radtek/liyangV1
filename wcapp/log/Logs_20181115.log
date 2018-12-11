@@ -1,0 +1,369 @@
+ ----------------------header-------------------------- 2018-11-15 08:25:09,121 [7] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-15 08:25:16,597 [16] INFO  log4netlogger - POST http://localhost:9991/
+2018-11-15 08:25:19,204 [16] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:25:20,767 [18] INFO  log4netlogger - GET http://localhost:9991/Content/process.css
+2018-11-15 08:25:24,606 [17] INFO  log4netlogger - GET http://localhost:9991/Process/Create
+2018-11-15 08:25:29,977 [19] INFO  log4netlogger - POST http://localhost:9991/Process/Create
+2018-11-15 08:25:30,360 [21] INFO  log4netlogger - GET http://localhost:9991/Process/Creating/49
+2018-11-15 08:25:40,413 [21] INFO  log4netlogger - POST http://localhost:9991/Process/AddProcedure?pid=49
+2018-11-15 08:25:40,512 [20] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Process/Creating/49
+2018-11-15 08:25:40,541 [18] INFO  log4netlogger - GET http://localhost:9991/Process/Creating/49
+2018-11-15 08:25:41,937 [7] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:25:48,481 [21] INFO  log4netlogger - GET http://localhost:9991/Process/Creating/46
+2018-11-15 08:25:55,202 [19] INFO  log4netlogger - POST http://localhost:9991/Approve/Submit?pid=46
+2018-11-15 08:25:55,356 [21] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Process/Creating/46
+2018-11-15 08:25:55,381 [5] INFO  log4netlogger - GET http://localhost:9991/Process/Creating/46
+2018-11-15 08:25:57,320 [18] INFO  log4netlogger - GET http://localhost:9991/User/NowUser
+2018-11-15 08:25:58,215 [7] INFO  log4netlogger - GET http://localhost:9991/Home/Logoff
+2018-11-15 08:25:58,220 [23] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-15 08:26:03,859 [23] INFO  log4netlogger - POST http://localhost:9991/
+2018-11-15 08:26:03,865 [19] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:26:05,478 [17] INFO  log4netlogger - GET http://localhost:9991/Approve/Waiting
+2018-11-15 08:26:07,467 [5] INFO  log4netlogger - GET http://localhost:9991/Approve/Approve/15
+2018-11-15 08:26:10,500 [21] INFO  log4netlogger - POST http://localhost:9991/Approve/Approve/15
+2018-11-15 08:26:11,990 [18] INFO  log4netlogger - GET http://localhost:9991/Approve/Waiting
+2018-11-15 08:26:13,468 [23] INFO  log4netlogger - GET http://localhost:9991/Home/Logoff
+2018-11-15 08:26:13,472 [19] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-15 08:26:16,727 [17] INFO  log4netlogger - POST http://localhost:9991/
+2018-11-15 08:26:16,732 [16] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:26:19,431 [23] INFO  log4netlogger - GET http://localhost:9991/Approve/Waiting
+2018-11-15 08:26:20,822 [16] INFO  log4netlogger - GET http://localhost:9991/Approve/Approve/15
+2018-11-15 08:26:23,419 [23] INFO  log4netlogger - POST http://localhost:9991/Approve/Approve/15
+2018-11-15 08:26:24,488 [5] INFO  log4netlogger - GET http://localhost:9991/Approve/Waiting
+2018-11-15 08:26:25,772 [21] INFO  log4netlogger - GET http://localhost:9991/Home/Logoff
+2018-11-15 08:26:25,776 [16] INFO  log4netlogger - GET http://localhost:9991/
+2018-11-15 08:26:30,495 [21] INFO  log4netlogger - POST http://localhost:9991/
+2018-11-15 08:26:30,500 [18] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:26:32,233 [23] INFO  log4netlogger - GET http://localhost:9991/Process/Detail/46
+2018-11-15 08:26:34,193 [17] INFO  log4netlogger - GET http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:26:39,522 [21] INFO  log4netlogger - POST http://localhost:9991/Procedure/StartTest?sid=66
+2018-11-15 08:26:39,577 [18] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:26:39,600 [23] INFO  log4netlogger - GET http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:26:46,182 [5] INFO  log4netlogger - POST http://localhost:9991/Procedure/ModifyParam?sid=66
+2018-11-15 08:26:46,202 [17] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:26:46,249 [19] INFO  log4netlogger - GET http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:27:02,148 [5] INFO  log4netlogger - POST http://localhost:9991/Procedure/ModifyParam?sid=66
+2018-11-15 08:27:02,169 [16] INFO  log4netlogger - GET http://localhost:9991/Home/Empty?http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:27:02,191 [18] INFO  log4netlogger - GET http://localhost:9991/Procedure/Detail/51
+2018-11-15 08:27:57,982 [18] INFO  log4netlogger - GET http://localhost:9991/Process
+2018-11-15 08:27:59,730 [21] INFO  log4netlogger - POST http://localhost:9991/Process/CheckMessage
+2018-11-15 08:28:04,273 [18] INFO  log4netlogger - POST http://localhost:9991/Process/CheckMessage
+2018-11-15 08:28:16,410 [17] INFO  log4netlogger - POST http://localhost:9991/Process/CheckMessage
+2018-11-15 08:28:24,108 [17] INFO  log4netlogger - GET http://localhost:9991/Process/ImportProcesses?processIdes=47,
+2018-11-15 08:28:38,970 [17] INFO  log4netlogger - GET http://localhost:9991/Process/ImportProcesses?processIdes=46,
+2018-11-15 08:29:46,786 [29] INFO  log4netlogger - GET http://localhost:9991/Sync
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 09:52:28,456 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 09:54:49,491 [8] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 09:54:53,400 [9] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 09:55:00,186 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 09:55:28,777 [15] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 09:55:51,096 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 09:57:26,095 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 09:57:29,115 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 09:57:34,972 [9] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 09:59:44,368 [5] INFO  log4netlogger - GET http://localhost:54938/
+ ----------------------header-------------------------- 2018-11-15 10:00:19,366 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 10:00:28,302 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 10:00:38,905 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 10:00:38,926 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:00:42,898 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 10:01:02,550 [9] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 10:02:14,070 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 10:02:14,187 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:02:22,146 [13] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 10:02:26,847 [12] INFO  log4netlogger - GET http://localhost:54938/Process/checkM?newList=工艺规程编号:wjq1零件号:wtf
+2018-11-15 10:02:33,269 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 10:02:34,546 [7] INFO  log4netlogger - GET http://localhost:54938/Process/checkM?newList=工艺规程编号:wjq1零件号:wtf
+2018-11-15 10:02:54,398 [9] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 10:02:56,268 [10] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/51
+2018-11-15 10:03:47,049 [9] INFO  log4netlogger - POST http://localhost:54938/Procedure/ModifyParam?sid=66
+2018-11-15 10:03:47,309 [8] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Detail/51
+2018-11-15 10:03:47,697 [7] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/51
+2018-11-15 10:03:59,811 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 10:04:01,076 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:04:03,394 [10] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 10:04:45,200 [10] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:04:45,327 [9] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-15 10:04:47,341 [8] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 10:04:57,791 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 10:05:04,743 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 10:05:08,136 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:05:10,736 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 10:07:52,113 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 10:07:52,234 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:08:01,063 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 10:08:03,316 [12] INFO  log4netlogger - GET http://localhost:54938/Process/checkM?newList=工艺规程编号:wjq1零件号:wtf
+2018-11-15 10:08:06,275 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 10:08:07,701 [11] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/51
+ ----------------------header-------------------------- 2018-11-15 10:08:32,421 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 10:09:00,619 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 10:09:03,580 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 10:09:08,382 [6] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 12:36:48,059 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 12:37:14,299 [9] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 12:37:17,040 [11] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 12:37:27,275 [11] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+2018-11-15 12:37:33,741 [13] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 12:37:36,548 [9] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:37:56,492 [10] INFO  log4netlogger - POST http://localhost:54938/Procedure/AddSeam?prid=58
+2018-11-15 12:37:57,093 [9] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:37:57,123 [12] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:37:59,201 [14] INFO  log4netlogger - POST http://localhost:54938/Procedure/GenParam?sid=71
+2018-11-15 12:39:44,423 [8] INFO  log4netlogger - POST http://localhost:54938/Procedure/EditParam?sid=71
+2018-11-15 12:39:44,603 [13] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:39:44,632 [12] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:39:50,119 [9] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 12:39:51,512 [7] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 12:39:54,490 [14] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+2018-11-15 12:39:56,854 [9] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 12:39:58,411 [15] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 12:40:02,260 [15] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 12:40:03,586 [16] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 12:40:05,272 [8] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 12:49:07,062 [42] INFO  log4netlogger - GET http://localhost:54938/Process/Index
+2018-11-15 12:52:03,870 [45] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 12:52:09,282 [41] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+ ----------------------header-------------------------- 2018-11-15 13:39:05,250 [5] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 13:41:41,129 [5] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 13:41:44,152 [7] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 13:41:51,254 [5] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessage
+2018-11-15 13:42:13,612 [5] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+2018-11-15 13:42:52,215 [5] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 13:42:54,904 [5] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 13:43:44,739 [5] INFO  log4netlogger - POST http://localhost:54938/Procedure/EditParam?sid=71
+2018-11-15 13:43:44,971 [18] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Procedure/Creating/58
+2018-11-15 13:43:45,006 [5] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+2018-11-15 13:43:48,187 [5] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 13:43:49,839 [18] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 13:43:52,173 [22] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+2018-11-15 13:43:56,416 [5] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 13:43:57,774 [18] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/58
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 13:47:57,332 [5] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 13:48:08,088 [32] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 13:48:11,402 [5] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=46,
+ ----------------------header-------------------------- 2018-11-15 18:10:16,407 [6] INFO  log4netlogger - GET http://localhost:54938/
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 18:12:30,061 [15] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:12:33,168 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:13:21,591 [9] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 18:14:06,954 [11] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:14:13,146 [10] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-15 18:14:16,922 [8] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-15 18:14:17,357 [8] ERROR log4netlogger -    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 WCAPP.Controllers.ProcessController.<>c.<GetDataTableForPercents>b__29_0(String s) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1498
+   在 System.Array.ConvertAll[TInput,TOutput](TInput[] array, Converter`2 converter)
+   在 WCAPP.Controllers.ProcessController.GetDataTableForPercents(String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1498
+   在 WCAPP.Controllers.ProcessController.ExportExcelForPercentForWebs(String sheetName, String xlsname, String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1438
+   在 WCAPP.Controllers.ProcessController.CheckMessage() 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1861
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-15 18:15:26,058 [7] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:15:31,779 [22] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-15 18:15:33,656 [11] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-15 18:15:34,023 [11] ERROR log4netlogger -    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 WCAPP.Controllers.ProcessController.<>c.<GetDataTableForPercents>b__29_0(String s) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1498
+   在 System.Array.ConvertAll[TInput,TOutput](TInput[] array, Converter`2 converter)
+   在 WCAPP.Controllers.ProcessController.GetDataTableForPercents(String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1498
+   在 WCAPP.Controllers.ProcessController.ExportExcelForPercentForWebs(String sheetName, String xlsname, String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1438
+   在 WCAPP.Controllers.ProcessController.CheckMessage() 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1860
+ ----------------------header-------------------------- 2018-11-15 18:17:16,752 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:17:28,085 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:17:31,667 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:17:36,891 [8] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-15 18:21:27,447 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:21:27,579 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:21:35,748 [6] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-15 18:24:53,054 [11] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=47,46
+2018-11-15 18:25:09,565 [15] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-15 18:25:19,576 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:25:27,078 [11] INFO  log4netlogger - POST http://localhost:54938/Process/DeleteProcess/47
+2018-11-15 18:25:28,934 [9] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Process
+2018-11-15 18:25:29,367 [12] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:25:37,327 [8] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 18:26:25,400 [13] INFO  log4netlogger - GET http://localhost:54938/Process/Index
+2018-11-15 18:26:25,467 [26] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:26:25,774 [9] INFO  log4netlogger - GET http://localhost:54938/Content/bootstrap.css
+2018-11-15 18:26:25,775 [23] INFO  log4netlogger - GET http://localhost:54938/Content/site.css
+2018-11-15 18:26:25,776 [15] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/all.css
+2018-11-15 18:26:25,789 [24] INFO  log4netlogger - GET http://localhost:54938/Scripts/modernizr-2.6.2.js
+2018-11-15 18:26:25,789 [8] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-1.10.2.js
+2018-11-15 18:26:25,789 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/md5.js
+2018-11-15 18:26:25,789 [25] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.unobtrusive-ajax.js
+2018-11-15 18:26:25,789 [13] INFO  log4netlogger - GET http://localhost:54938/Scripts/bootstrap.js
+2018-11-15 18:26:25,790 [15] INFO  log4netlogger - GET http://localhost:54938/Scripts/respond.js
+2018-11-15 18:26:25,798 [6] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.form.js
+2018-11-15 18:26:25,830 [11] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-ui-1.11.4.js
+2018-11-15 18:26:25,932 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/base.css
+2018-11-15 18:26:25,932 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/theme.css
+2018-11-15 18:26:25,963 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/core.css
+2018-11-15 18:26:25,963 [22] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/accordion.css
+2018-11-15 18:26:25,964 [14] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/autocomplete.css
+2018-11-15 18:26:25,966 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/button.css
+2018-11-15 18:26:25,968 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/datepicker.css
+2018-11-15 18:26:25,968 [14] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/dialog.css
+2018-11-15 18:26:25,972 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/resizable.css
+2018-11-15 18:26:25,972 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/progressbar.css
+2018-11-15 18:26:25,972 [22] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/draggable.css
+2018-11-15 18:26:25,974 [24] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/menu.css
+2018-11-15 18:26:25,974 [25] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectable.css
+2018-11-15 18:26:25,981 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectmenu.css
+2018-11-15 18:26:25,981 [15] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/slider.css
+2018-11-15 18:26:25,984 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tabs.css
+2018-11-15 18:26:25,984 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/sortable.css
+2018-11-15 18:26:25,985 [26] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/spinner.css
+2018-11-15 18:26:25,993 [23] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tooltip.css
+2018-11-15 18:26:28,605 [22] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-15 18:26:34,700 [15] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:26:34,815 [12] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:26:36,129 [23] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+2018-11-15 18:26:36,224 [9] INFO  log4netlogger - GET http://localhost:54938/Images/bg.jpg
+2018-11-15 18:26:39,621 [14] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-15 18:27:22,246 [13] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 18:36:14,029 [10] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 18:36:18,526 [15] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/51
+2018-11-15 18:36:23,311 [22] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png
+2018-11-15 18:36:23,312 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png
+2018-11-15 18:36:23,312 [17] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/images/ui-icons_222222_256x240.png
+2018-11-15 18:36:23,322 [14] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+2018-11-15 18:36:49,562 [12] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:37:21,896 [6] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:37:32,201 [6] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:37:34,305 [8] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:37:37,589 [24] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:37:54,228 [24] INFO  log4netlogger - POST http://localhost:54938/Procedure/FinishTest
+2018-11-15 18:38:18,927 [16] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/51
+2018-11-15 18:38:18,988 [13] INFO  log4netlogger - GET http://localhost:54938/Content/bootstrap.css
+2018-11-15 18:38:18,997 [21] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/all.css
+2018-11-15 18:38:19,002 [26] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/base.css
+2018-11-15 18:38:19,003 [15] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/theme.css
+2018-11-15 18:38:19,006 [14] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/core.css
+2018-11-15 18:38:19,007 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/accordion.css
+2018-11-15 18:38:19,008 [10] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/autocomplete.css
+2018-11-15 18:38:19,009 [20] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/button.css
+2018-11-15 18:38:19,010 [22] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/datepicker.css
+2018-11-15 18:38:19,012 [17] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/dialog.css
+2018-11-15 18:38:19,014 [14] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/draggable.css
+2018-11-15 18:38:19,014 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/menu.css
+2018-11-15 18:38:19,014 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/progressbar.css
+2018-11-15 18:38:19,017 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectable.css
+2018-11-15 18:38:19,017 [22] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/resizable.css
+2018-11-15 18:38:19,019 [16] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectmenu.css
+2018-11-15 18:38:19,019 [24] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/sortable.css
+2018-11-15 18:38:19,021 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/slider.css
+2018-11-15 18:38:19,025 [16] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/spinner.css
+2018-11-15 18:38:19,025 [24] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tabs.css
+2018-11-15 18:38:19,026 [21] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tooltip.css
+2018-11-15 18:38:19,035 [7] INFO  log4netlogger - GET http://localhost:54938/Content/site.css
+2018-11-15 18:38:19,040 [26] INFO  log4netlogger - GET http://localhost:54938/Scripts/modernizr-2.6.2.js
+2018-11-15 18:38:19,052 [15] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-1.10.2.js
+2018-11-15 18:38:19,074 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-ui-1.11.4.js
+2018-11-15 18:38:19,109 [10] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.unobtrusive-ajax.js
+2018-11-15 18:38:19,114 [10] INFO  log4netlogger - GET http://localhost:54938/Scripts/md5.js
+2018-11-15 18:38:19,118 [20] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.form.js
+2018-11-15 18:38:19,125 [11] INFO  log4netlogger - GET http://localhost:54938/Scripts/bootstrap.js
+2018-11-15 18:38:19,132 [9] INFO  log4netlogger - GET http://localhost:54938/Scripts/respond.js
+2018-11-15 18:38:19,157 [6] INFO  log4netlogger - GET http://localhost:54938/Images/bg.jpg
+2018-11-15 18:38:23,122 [14] INFO  log4netlogger - GET http://localhost:54938/Procedure/CheckPDF?seamId=66
+2018-11-15 18:39:45,463 [6] INFO  log4netlogger - GET http://localhost:54938/Procedure/CheckPDF?seamId=66
+2018-11-15 18:39:54,718 [24] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 18:39:59,276 [24] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:40:01,679 [17] INFO  log4netlogger - POST http://localhost:54938/Process/Publish
+2018-11-15 18:40:03,088 [11] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Process
+2018-11-15 18:40:03,123 [10] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:40:04,983 [20] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 18:40:06,128 [22] INFO  log4netlogger - POST http://localhost:54938/Process/Revise/46
+2018-11-15 18:40:06,608 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-15 18:40:11,117 [21] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:40:19,471 [9] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 18:40:31,422 [15] INFO  log4netlogger - POST http://localhost:54938/Approve/Submit?pid=49
+2018-11-15 18:40:31,497 [8] INFO  log4netlogger - GET http://localhost:54938/Home/Empty?http://localhost:54938/Process/Creating/49
+2018-11-15 18:40:31,527 [26] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/49
+2018-11-15 18:40:33,909 [20] INFO  log4netlogger - GET http://localhost:54938/Home/Logoff
+2018-11-15 18:40:33,915 [9] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:40:39,896 [16] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:40:39,904 [22] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:40:43,511 [9] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:40:46,042 [13] INFO  log4netlogger - GET http://localhost:54938/Home/Logoff
+2018-11-15 18:40:46,045 [20] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:40:50,470 [16] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:40:50,475 [16] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:40:52,177 [11] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:40:53,408 [7] INFO  log4netlogger - GET http://localhost:54938/Approve/Approve/16
+2018-11-15 18:40:57,826 [12] INFO  log4netlogger - POST http://localhost:54938/Approve/Approve/16
+2018-11-15 18:40:59,258 [7] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:41:00,264 [17] INFO  log4netlogger - GET http://localhost:54938/Home/Logoff
+2018-11-15 18:41:00,268 [8] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:41:04,129 [12] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:41:04,134 [12] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:41:06,414 [24] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:41:08,919 [10] INFO  log4netlogger - GET http://localhost:54938/User/NowUser
+2018-11-15 18:41:11,154 [8] INFO  log4netlogger - GET http://localhost:54938/Home/Logoff
+2018-11-15 18:41:11,157 [15] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:41:16,315 [26] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:41:16,323 [26] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:41:18,085 [9] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:41:19,831 [14] INFO  log4netlogger - GET http://localhost:54938/Approve/Approve/16
+2018-11-15 18:41:23,300 [7] INFO  log4netlogger - POST http://localhost:54938/Approve/Approve/16
+2018-11-15 18:41:24,784 [16] INFO  log4netlogger - GET http://localhost:54938/Approve/Waiting
+2018-11-15 18:41:26,057 [20] INFO  log4netlogger - GET http://localhost:54938/Home/Logoff
+2018-11-15 18:41:26,060 [9] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-15 18:41:30,280 [16] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-15 18:41:30,286 [11] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:41:33,952 [12] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-15 18:41:36,013 [20] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/46
+2018-11-15 18:41:38,172 [8] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 18:41:46,086 [13] INFO  log4netlogger - POST http://localhost:54938/Process/CheckMessageWords
+2018-11-15 18:41:55,736 [16] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=49,
+2018-11-15 18:42:47,760 [16] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=50,
+2018-11-15 18:43:22,061 [12] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 18:43:38,139 [11] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 18:43:39,512 [11] ERROR log4netlogger -    在 WCAPP.Utils.Common.GetDbEnum[T](Object cell) 位置 D:\liyang\wcapp\WCAPP\Utils\Common.cs:行号 231
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 98
+2018-11-15 18:43:39,870 [11] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:02:51,705 [7] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:02:51,886 [7] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 142
+2018-11-15 19:02:52,007 [7] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:03:08,898 [7] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-15 19:03:12,663 [17] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=49,
+2018-11-15 19:03:25,321 [20] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 19:03:28,181 [25] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 19:03:31,522 [9] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 19:03:32,647 [15] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-15 19:03:38,238 [24] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:03:38,296 [24] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 73
+2018-11-15 19:03:38,333 [24] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:09:43,079 [20] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:09:43,147 [20] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 158
+2018-11-15 19:09:43,182 [20] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:10:28,138 [16] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:10:28,184 [16] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 159
+2018-11-15 19:10:28,219 [16] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:11:20,778 [11] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:11:20,829 [13] ERROR log4netlogger -    在 System.Data.DataRow.GetDataColumn(String columnName)
+   在 System.Data.DataRow.get_Item(String columnName)
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 98
+2018-11-15 19:11:20,865 [13] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:12:32,346 [29] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:12:32,422 [29] ERROR log4netlogger -    在 WCAPP.Utils.Common.GetDbEnum[T](Object cell) 位置 D:\liyang\wcapp\WCAPP\Utils\Common.cs:行号 231
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 98
+2018-11-15 19:12:32,458 [29] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-15 19:13:56,055 [30] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-15 19:13:56,102 [30] ERROR log4netlogger -    在 WCAPP.Utils.Common.GetDbEnum[T](Object cell) 位置 D:\liyang\wcapp\WCAPP\Utils\Common.cs:行号 231
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 98
+2018-11-15 19:13:56,137 [30] ERROR log4netlogger -    在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 191
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+ ----------------------footer-------------------------- 

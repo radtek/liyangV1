@@ -1,0 +1,78 @@
+﻿
+@using WCAPP.Models.Database
+@using WCAPP.Types
+
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        @*        <ul class="breadcrumb">*@
+        @*            <li>@Html.ActionLink("焊接工艺规程", "Index", "Home")</li>*@
+        @*            <li class="active">规程</li>*@
+        @*        </ul>*@
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">审核中</a>
+            </li>
+            <li>
+                <a style="font-size: 16px" href="#tab2" data-toggle="tab">审核不通过</a>
+            </li>
+            <li>
+                <a style="font-size: 16px" href="#tab3" data-toggle="tab">审核通过</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content" style="padding: 30px">
+                    <div class="c">     
+                        <div class="cir1 text-center">
+                            王大伟
+                        </div>
+                        <p>审核通过</p>
+                    </div>
+                    <img style="width: 50px; position: relative; top: -80px; padding: 6px;" src="../../Images/dire.png">
+                    <div class="c">
+                        <div class="cir2 text-center">
+                            刘大伟
+                        </div>
+                        <p>审核中</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div class="content" style="padding: 30px">
+                    <div class="c">
+                        <div class="cirr text-center">
+                            刘大伟
+                        </div>
+                        <p>审核不通过</p>
+                    </div>
+                    <img style="width: 50px; position: relative; top: -80px; padding: 6px;" src="../../Images/dire.png">
+                    <div class="c">
+                        <div class="cirw text-center">
+                            王大伟
+                        </div>
+                        <p>等待审核</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <div class="content" style="padding: 30px">
+                    <div class="c">
+                        <div class="cir1 text-center">
+                            王大伟
+                        </div>
+                        <p>审核通过</p>
+                    </div>
+                    <img style="width: 50px; position: relative; top: -80px; padding: 6px;" src="../../Images/dire.png">
+                    <div class="c">
+                        <div class="cir1 text-center">
+                            刘大伟
+                        </div>
+                        <p>审核通过</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

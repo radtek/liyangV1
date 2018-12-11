@@ -1,0 +1,126 @@
+ ----------------------header-------------------------- 2018-11-18 20:59:15,530 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 20:59:17,525 [6] INFO  log4netlogger - GET http://localhost:54938/Content/bootstrap.css
+2018-11-18 20:59:17,525 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/all.css
+2018-11-18 20:59:17,525 [7] INFO  log4netlogger - GET http://localhost:54938/Content/site.css
+2018-11-18 20:59:17,539 [11] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.unobtrusive-ajax.js
+2018-11-18 20:59:17,540 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-1.10.2.js
+2018-11-18 20:59:17,540 [9] INFO  log4netlogger - GET http://localhost:54938/Scripts/modernizr-2.6.2.js
+2018-11-18 20:59:17,541 [10] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-ui-1.11.4.js
+2018-11-18 20:59:17,551 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/base.css
+2018-11-18 20:59:17,552 [10] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/theme.css
+2018-11-18 20:59:17,556 [6] INFO  log4netlogger - GET http://localhost:54938/Scripts/md5.js
+2018-11-18 20:59:17,562 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.form.js
+2018-11-18 20:59:17,564 [9] INFO  log4netlogger - GET http://localhost:54938/Scripts/bootstrap.js
+2018-11-18 20:59:17,568 [8] INFO  log4netlogger - GET http://localhost:54938/Scripts/respond.js
+2018-11-18 20:59:17,633 [11] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/core.css
+2018-11-18 20:59:17,633 [10] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/accordion.css
+2018-11-18 20:59:17,633 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/button.css
+2018-11-18 20:59:17,633 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/datepicker.css
+2018-11-18 20:59:17,634 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/autocomplete.css
+2018-11-18 20:59:17,634 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/dialog.css
+2018-11-18 20:59:17,639 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/draggable.css
+2018-11-18 20:59:17,651 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/progressbar.css
+2018-11-18 20:59:17,651 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/menu.css
+2018-11-18 20:59:17,651 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/resizable.css
+2018-11-18 20:59:17,783 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectable.css
+2018-11-18 20:59:17,783 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectmenu.css
+2018-11-18 20:59:17,783 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/sortable.css
+2018-11-18 20:59:17,783 [11] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/slider.css
+2018-11-18 20:59:17,784 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/spinner.css
+2018-11-18 20:59:17,784 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tabs.css
+2018-11-18 20:59:18,002 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tooltip.css
+2018-11-18 20:59:26,410 [8] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-18 20:59:30,829 [10] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 20:59:32,572 [13] INFO  log4netlogger - GET http://localhost:54938/Content/bootstrap.css
+2018-11-18 20:59:32,572 [7] INFO  log4netlogger - GET http://localhost:54938/Content/site.css
+2018-11-18 20:59:32,573 [11] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/all.css
+2018-11-18 20:59:32,574 [14] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+2018-11-18 20:59:32,721 [6] INFO  log4netlogger - GET http://localhost:54938/Images/bg.jpg
+2018-11-18 20:59:40,301 [7] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-18 21:13:59,644 [10] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:13:59,768 [10] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:14:05,547 [14] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.unobtrusive-ajax.js
+2018-11-18 21:14:05,547 [15] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-1.10.2.js
+2018-11-18 21:14:05,548 [17] INFO  log4netlogger - GET http://localhost:54938/Scripts/md5.js
+2018-11-18 21:14:05,548 [11] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.form.js
+2018-11-18 21:14:05,548 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/modernizr-2.6.2.js
+2018-11-18 21:14:05,548 [16] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-ui-1.11.4.js
+2018-11-18 21:14:05,573 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/bootstrap.js
+2018-11-18 21:14:05,573 [14] INFO  log4netlogger - GET http://localhost:54938/Scripts/respond.js
+ ----------------------header-------------------------- 2018-11-18 21:14:22,160 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:14:24,907 [8] INFO  log4netlogger - GET http://localhost:54938/Content/bootstrap.css
+2018-11-18 21:14:24,907 [6] INFO  log4netlogger - GET http://localhost:54938/Content/site.css
+2018-11-18 21:14:24,907 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/all.css
+2018-11-18 21:14:24,969 [8] INFO  log4netlogger - GET http://localhost:54938/Scripts/respond.js
+2018-11-18 21:14:24,969 [9] INFO  log4netlogger - GET http://localhost:54938/Scripts/modernizr-2.6.2.js
+2018-11-18 21:14:24,970 [10] INFO  log4netlogger - GET http://localhost:54938/Scripts/md5.js
+2018-11-18 21:14:24,971 [6] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-1.10.2.js
+2018-11-18 21:14:24,973 [11] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.form.js
+2018-11-18 21:14:24,976 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/base.css
+2018-11-18 21:14:24,976 [12] INFO  log4netlogger - GET http://localhost:54938/Scripts/bootstrap.js
+2018-11-18 21:14:24,977 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/theme.css
+2018-11-18 21:14:24,979 [6] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery-ui-1.11.4.js
+2018-11-18 21:14:24,979 [13] INFO  log4netlogger - GET http://localhost:54938/Scripts/jquery.unobtrusive-ajax.js
+2018-11-18 21:14:24,990 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/core.css
+2018-11-18 21:14:25,026 [10] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/autocomplete.css
+2018-11-18 21:14:25,026 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/button.css
+2018-11-18 21:14:25,026 [11] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/accordion.css
+2018-11-18 21:14:25,027 [6] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/datepicker.css
+2018-11-18 21:14:25,029 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/dialog.css
+2018-11-18 21:14:25,029 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/draggable.css
+2018-11-18 21:14:25,033 [11] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/menu.css
+2018-11-18 21:14:25,038 [13] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/progressbar.css
+2018-11-18 21:14:25,039 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/slider.css
+2018-11-18 21:14:25,039 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/resizable.css
+2018-11-18 21:14:25,040 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/sortable.css
+2018-11-18 21:14:25,043 [10] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/spinner.css
+2018-11-18 21:14:25,053 [12] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tooltip.css
+2018-11-18 21:14:25,053 [7] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/tabs.css
+2018-11-18 21:14:25,053 [8] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectable.css
+2018-11-18 21:14:25,055 [9] INFO  log4netlogger - GET http://localhost:54938/Content/themes/base/selectmenu.css
+2018-11-18 21:14:35,255 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-18 21:14:38,283 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:14:39,043 [8] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+2018-11-18 21:14:39,140 [9] INFO  log4netlogger - GET http://localhost:54938/Images/bg.jpg
+2018-11-18 21:14:43,745 [8] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-18 21:15:44,492 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:15:44,626 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:15:53,045 [7] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-18 21:15:53,519 [7] ERROR log4netlogger -    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 WCAPP.Controllers.ProcessController.GetDataTableForPercents(String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1632
+2018-11-18 21:15:53,519 [7] ERROR log4netlogger -    在 WCAPP.Controllers.ProcessController.ExportExcelForPercentForWebs(String sheetName, String xlsname, String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1441
+ ----------------------header-------------------------- 2018-11-18 21:16:05,059 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:16:38,214 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-18 21:16:41,085 [9] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:17:02,576 [6] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-18 21:18:34,398 [6] ERROR log4netlogger -    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 WCAPP.Controllers.ProcessController.GetDataTableForPercents(String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1632
+2018-11-18 21:18:34,425 [6] ERROR log4netlogger -    在 WCAPP.Controllers.ProcessController.ExportExcelForPercentForWebs(String sheetName, String xlsname, String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1441
+2018-11-18 21:20:14,827 [8] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-18 21:20:14,928 [8] ERROR log4netlogger -    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 WCAPP.Controllers.ProcessController.GetDataTableForPercents(String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1632
+2018-11-18 21:20:14,958 [8] ERROR log4netlogger -    在 WCAPP.Controllers.ProcessController.ExportExcelForPercentForWebs(String sheetName, String xlsname, String[] areaid) 位置 D:\liyang\wcapp\WCAPP\Controllers\ProcessController.cs:行号 1441
+2018-11-18 21:20:25,491 [21] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------header-------------------------- 2018-11-18 21:33:06,557 [5] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:33:13,921 [7] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-18 21:33:16,878 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:33:41,921 [5] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-18 21:34:56,433 [6] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-18 21:35:07,795 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-18 21:35:09,246 [15] INFO  log4netlogger - GET http://localhost:54938/Procedure/Detail/58
+2018-11-18 21:35:21,785 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Detail/49
+2018-11-18 21:35:34,713 [14] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:35:46,880 [7] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-18 21:35:49,255 [6] INFO  log4netlogger - GET http://localhost:54938/Procedure/Creating/59
+2018-11-18 21:36:01,005 [6] INFO  log4netlogger - GET http://localhost:54938/Process/Creating/50
+2018-11-18 21:36:03,094 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+ ----------------------header-------------------------- 2018-11-18 21:37:31,059 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:37:31,188 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:37:41,681 [8] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+ ----------------------footer--------------------------  ----------------------header-------------------------- 2018-11-18 21:39:42,695 [11] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-18 21:39:42,798 [12] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-18 21:40:05,301 [16] INFO  log4netlogger - GET http://localhost:54938/Process/CheckMessage
+2018-11-18 21:40:29,797 [16] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=50,

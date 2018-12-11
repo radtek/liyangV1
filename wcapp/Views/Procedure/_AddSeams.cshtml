@@ -1,0 +1,139 @@
+﻿@model WCAPP.Models.ProcedureModels.AddSeamModel
+
+@{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    var style = new {style = "font-size:14px;color:red"};
+    @Html.ValidationMessage("Error", style)
+
+<table style=" border: none; margin-left: 20px;margin-top: 20px; z-index: 9; position: relative;">
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">焊缝编号</span>@Html.TextBoxFor(m => m.No)
+            <span>@Html.ValidationMessageFor(m => m.No, "请输入焊缝编号", style)</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">接头形式</span>@Html.SelectFor(m => m.JointForm,new { id="jointForm"})
+            <span>@Html.ValidationMessageFor(m => m.JointForm, "请输入接头形式", style)</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">焊缝等级</span>@Html.SelectFor(m => m.SeamLevel)
+            <span>@Html.ValidationMessageFor(m => m.SeamLevel, "请输入焊缝等级", style)</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">验收标准</span>@Html.TextBoxFor(m => m.CheckStandard)
+            <span>@Html.ValidationMessageFor(m => m.CheckStandard, "请输入验收标准", style)</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">焊缝间隙</span>@Html.TextBoxFor(m => m.Gap)
+            <span>@Html.ValidationMessageFor(m => m.Gap, "请输入焊缝间隙", style)</span>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">材料牌号1</span>@Html.TextBoxFor(m => m.Material1)
+            <span>@Html.ValidationMessageFor(m => m.Material1, "请输入材料牌号1", style)</span>
+        </td>
+    </tr>
+    <tr id="weldway" style="display: none">
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">材料规格1</span>@Html.TextBoxFor(m => m.Thick1)
+            <span>@Html.ValidationMessageFor(m => m.Thick1, "请输入材料规格1", style)</span>
+        </td>
+    </tr>
+    <tr id="weldway1" style="display: none">
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">材料牌号2</span>@Html.TextBoxFor(m => m.Material2)
+            <span>@Html.ValidationMessageFor(m => m.Material2, "请输入材料牌号2", style)</span>
+        </td>
+    </tr>
+    <tr id="weldway2" style="display: none">
+        <td style="padding: 8px">
+            <span style="width: 100px; display: inline-block">材料规格2</span>@Html.TextBoxFor(m => m.Thick2)
+            <span>@Html.ValidationMessageFor(m => m.Thick2, "请输入材料规格2", style)</span>
+        </td>
+    </tr>
+
+    @if (ViewBag.IsResist)
+    {
+        <tr id="weldway3" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">材料牌号3</span>@Html.TextBoxFor(m => m.Material3)
+                <span>@Html.ValidationMessageFor(m => m.Material3, "请输入材料牌号3", style)</span>
+            </td>
+        </tr>
+        <tr id="weldway4" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">材料规格3</span>@Html.TextBoxFor(m => m.Thick3)
+                <span>@Html.ValidationMessageFor(m => m.Thick3, "请输入材料规格3", style)</span>
+            </td>
+        </tr>
+        <tr id="weldway5" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">材料牌号4</span>@Html.TextBoxFor(m => m.Material4)
+                <span>@Html.ValidationMessageFor(m => m.Material3, "请输入材料牌号4", style)</span>
+            </td>
+        </tr>
+        <tr id="weldway6" style="display: none">
+            <td style="padding: 8px">
+                <span style="width: 100px; display: inline-block">材料规格4</span>@Html.TextBoxFor(m => m.Thick4)
+                <span>@Html.ValidationMessageFor(m => m.Thick3, "请输入材料规格4", style)</span>
+            </td>
+        </tr>        
+    }
+    <tr style="padding: 8px">
+        <td style="text-align: center">
+            <input type="submit" value="添加" class="btn btn-large btn-primary">
+        </td>
+    </tr>
+</table>
+}
+<script>
+    function onResp(data) {
+        if (data.succeed) {
+            reload();
+        } else if (data.error) {
+            alert(data.error);
+        }
+    }
+    function config() {
+        var ww = $("#weldway"); 
+        var ww1 = $("#weldway1");
+        var ww2 = $("#weldway2");
+        var ww3 = $("#weldway3");
+        var ww4 = $("#weldway4");
+        var ww5 = $("#weldway5");
+        var ww6 = $("#weldway6");
+        switch($(this).val()) {
+        case "堆焊":
+                ww.hide();
+                ww1.hide();
+                ww2.hide();
+                ww3.hide();
+                ww4.hide();
+                ww5.hide();
+                ww6.hide();
+            break;       
+        default:
+                ww.show();
+                ww1.show();
+                ww2.show();
+                ww3.show();
+                ww4.show();
+                ww5.show();
+                ww6.show();
+        }
+    }
+
+    var wm = $("#jointForm");
+    wm.change(config);
+    config.apply(wm);
+</script>

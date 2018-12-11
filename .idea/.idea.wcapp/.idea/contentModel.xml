@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\jsss\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_wcapp.-1981229110.00" t="ExcludeRecursive" />
+    <e p="D:\liyang\wcapp" t="IncludeFlat">
+      <e p="DealData" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DealData.csproj" t="IncludeRecursive" />
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="Form1.resx" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Test" t="IncludeRecursive">
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Test.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="wcapp" t="IncludeRecursive">
+        <e p="App_Start" t="Include">
+          <e p="BundleConfig.cs" t="Include" />
+          <e p="FilterConfig.cs" t="Include" />
+          <e p="RouteConfig.cs" t="Include" />
+          <e p="WcappModule.cs" t="Include" />
+        </e>
+        <e p="ApplicationInsights.config" t="Include" />
+        <e p="Attributes" t="Include">
+          <e p="AuthorityAttribute.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="config.json" t="Include" />
+        <e p="Content" t="Include">
+          <e p="bootstrap.css" t="Include" />
+          <e p="bootstrap.min.css" t="Include" />
+          <e p="daterangepicker.min.css" t="Include" />
+          <e p="process.css" t="Include" />
+          <e p="Site.css" t="Include" />
+          <e p="themes" t="Include">
+            <e p="base" t="Include">
+              <e p="accordion.css" t="Include" />
+              <e p="all.css" t="Include" />
+              <e p="autocomplete.css" t="Include" />
+              <e p="base.css" t="Include" />
+              <e p="button.css" t="Include" />
+              <e p="core.css" t="Include" />
+              <e p="datepicker.css" t="Include" />
+              <e p="dialog.css" t="Include" />
+              <e p="draggable.css" t="Include" />
+              <e p="images" t="Include">
+                <e p="ui-bg_flat_0_aaaaaa_40x100.png" t="Include" />
+                <e p="ui-bg_flat_75_ffffff_40x100.png" t="Include" />
+                <e p="ui-bg_glass_55_fbf9ee_1x400.png" t="Include" />
+                <e p="ui-bg_glass_65_ffffff_1x400.png" t="Include" />
+                <e p="ui-bg_glass_75_dadada_1x400.png" t="Include" />
+                <e p="ui-bg_glass_75_e6e6e6_1x400.png" t="Include" />
+                <e p="ui-bg_glass_95_fef1ec_1x400.png" t="Include" />
+                <e p="ui-bg_highlight-soft_75_cccccc_1x100.png" t="Include" />
+                <e p="ui-icons_222222_256x240.png" t="Include" />
+                <e p="ui-icons_2e83ff_256x240.png" t="Include" />
+                <e p="ui-icons_454545_256x240.png" t="Include" />
+                <e p="ui-icons_888888_256x240.png" t="Include" />
+                <e p="ui-icons_cd0a0a_256x240.png" t="Include" />
+              </e>
+              <e p="menu.css" t="Include" />
+              <e p="progressbar.css" t="Include" />
+              <e p="resizable.css" t="Include" />
+              <e p="selectable.css" t="Include" />
+              <e p="selectmenu.css" t="Include" />
+              <e p="slider.css" t="Include" />
+              <e p="sortable.css" t="Include" />
+              <e p="spinner.css" t="Include" />
+              <e p="tabs.css" t="Include" />
+              <e p="theme.css" t="Include" />
+              <e p="tooltip.css" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="ApproveController.cs" t="Include" />
+          <e p="ERPController.cs" t="Include" />
+          <e p="HomeController.cs" t="Include" />
+          <e p="ProcedureController.cs" t="Include" />
+          <e p="ProcessController.cs" t="Include" />
+          <e p="SeamController.cs" t="Include" />
+          <e p="SyncController.cs" t="Include" />
+          <e p="SynchroTableController.cs" t="Include" />
+          <e p="TaskController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="fonts" t="Include">
+          <e p="glyphicons-halflings-regular.eot" t="Include" />
+          <e p="glyphicons-halflings-regular.svg" t="Include" />
+          <e p="glyphicons-halflings-regular.ttf" t="Include" />
+          <e p="glyphicons-halflings-regular.woff" t="Include" />
+        </e>
+        <e p="Global" t="Include">
+          <e p="Context.cs" t="Include" />
+          <e p="Enum.cs" t="Include" />
+          <e p="Exends.cs" t="Include" />
+          <e p="GlobalData.cs" t="Include" />
+          <e p="Log.cs" t="Include" />
+          <e p="Sessions.cs" t="Include" />
+        </e>
+        <e p="Global.asax" t="Include" />
+        <e p="Global.asax.cs" t="Include" />
+        <e p="images" t="Include">
+          <e p="bg.jpg" t="Include" />
+          <e p="close.png" t="Include" />
+          <e p="dire.png" t="Include" />
+        </e>
+        <e p="Libs" t="Include">
+          <e p="ERPFile.cs" t="Include" />
+          <e p="Reporter.cs" t="Include" />
+          <e p="SyncFile.cs" t="Include" />
+          <e p="TaskFile.cs" t="Include" />
+          <e p="UserExcel.cs" t="Include" />
+          <e p="WcappExcel.cs" t="Include" />
+          <e p="WcappFile.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="Configuration.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="ApproveModels" t="Include">
+            <e p="ApproveModel.cs" t="Include" />
+          </e>
+          <e p="Database" t="Include">
+            <e p="Approve.cs" t="Include" />
+            <e p="DispatchMessage.cs" t="Include" />
+            <e p="ERP.cs" t="Include" />
+            <e p="Material.cs" t="Include" />
+            <e p="Procedure.cs" t="Include" />
+            <e p="Process.cs" t="Include" />
+            <e p="ReportFile.cs" t="Include" />
+            <e p="Seam.cs" t="Include" />
+            <e p="SeamParam.cs" t="Include" />
+            <e p="SynchroTable.cs" t="Include" />
+            <e p="Test.cs" t="Include" />
+            <e p="TestModel.cs" t="Include" />
+            <e p="User.cs" t="Include" />
+            <e p="Welder.cs" t="Include" />
+          </e>
+          <e p="DispatchMessage" t="Include">
+            <e p="AddDispatchMessageModel.cs" t="Include" />
+            <e p="UpdateDispatchMessageModel.cs" t="Include" />
+          </e>
+          <e p="HomeModels" t="Include">
+            <e p="LoginModel.cs" t="Include" />
+            <e p="SessionUser.cs" t="Include" />
+          </e>
+          <e p="ProcedureModels" t="Include">
+            <e p="AddSeamModel.cs" t="Include" />
+            <e p="EditParamModel.cs" t="Include" />
+            <e p="FinishTestModel.cs" t="Include" />
+            <e p="GenParamModel.cs" t="Include" />
+          </e>
+          <e p="ProcessModels" t="Include">
+            <e p="AddProcedureModel.cs" t="Include" />
+            <e p="CreateModel.cs" t="Include" />
+            <e p="PdmCreateModel.cs" t="Include" />
+            <e p="SubmitApproveModel.cs" t="Include" />
+          </e>
+          <e p="SynchroTableModels" t="Include">
+            <e p="AddSynchroTableModel.cs" t="Include" />
+            <e p="UpdateSynchroTableModel.cs" t="Include" />
+          </e>
+          <e p="UserModels" t="Include">
+            <e p="AddUserModel.cs" t="Include" />
+            <e p="ModifyUser.cs" t="Include" />
+            <e p="ModifyUserModel.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="FolderProfile.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="bootstrap.js" t="Include" />
+          <e p="bootstrap.min.js" t="Include" />
+          <e p="demo.js" t="Include" />
+          <e p="html5shiv.js" t="Include" />
+          <e p="jquery-1.10.2.intellisense.js" t="Include" />
+          <e p="jquery-1.10.2.js" t="Include" />
+          <e p="jquery-1.10.2.min.js" t="Include" />
+          <e p="jquery-1.10.2.min.map" t="Include" />
+          <e p="jquery-1.7.2.min.js" t="Include" />
+          <e p="jquery-ui-1.11.4.js" t="Include" />
+          <e p="jquery-ui-1.11.4.min.js" t="Include" />
+          <e p="jquery.daterangepicker.js" t="Include" />
+          <e p="jquery.daterangepicker.min.js" t="Include" />
+          <e p="jquery.form.js" t="Include" />
+          <e p="jquery.form.min.js" t="Include" />
+          <e p="jquery.form.min.js.map" t="Include" />
+          <e p="jquery.js" t="Include" />
+          <e p="jquery.min.js" t="Include" />
+          <e p="jquery.unobtrusive-ajax.js" t="Include" />
+          <e p="jquery.unobtrusive-ajax.min.js" t="Include" />
+          <e p="md5.js" t="Include" />
+          <e p="modernizr-2.6.2.js" t="Include" />
+          <e p="moment.min.js" t="Include" />
+          <e p="respond.js" t="Include" />
+          <e p="respond.min.js" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="Helper.cs" t="Include" />
+          <e p="HomeManager.cs" t="Include" />
+          <e p="SyncManager.cs" t="Include" />
+          <e p="UserManager.cs" t="Include" />
+          <e p="WelderManager.cs" t="Include" />
+        </e>
+        <e p="Types" t="Include">
+          <e p="Convertors.cs" t="Include" />
+          <e p="Enums.cs" t="Include" />
+          <e p="Error.cs" t="Include" />
+          <e p="WeldParam.cs" t="Include" />
+        </e>
+        <e p="Utils" t="Include">
+          <e p="Common.cs" t="Include" />
+          <e p="Encrypt.cs" t="Include" />
+          <e p="QrCoder.cs" t="Include" />
+          <e p="TaskQueue.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Approve" t="Include">
+            <e p="_SubmitApprove.cshtml" t="Include" />
+            <e p="Approve.cshtml" t="Include" />
+            <e p="Detail.cshtml" t="Include" />
+            <e p="Submit.cshtml" t="Include" />
+            <e p="Waiting.cshtml" t="Include" />
+          </e>
+          <e p="ERP" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Home" t="Include">
+            <e p="Empty.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Procedure" t="Include">
+            <e p="_AddSeam.cshtml" t="Include" />
+            <e p="_AddSeams.cshtml" t="Include" />
+            <e p="_EditParam.cshtml" t="Include" />
+            <e p="_FinishTest.cshtml" t="Include" />
+            <e p="_ModifyParam.cshtml" t="Include" />
+            <e p="_ReviseEditParam.cshtml" t="Include" />
+            <e p="_ReviseModifyParam.cshtml" t="Include" />
+            <e p="Creating.cshtml" t="Include" />
+            <e p="Detail.cshtml" t="Include" />
+            <e p="HistoryDetail.cshtml" t="Include" />
+            <e p="ReviseCreating.cshtml" t="Include" />
+          </e>
+          <e p="Process" t="Include">
+            <e p="_AddProcedure.cshtml" t="Include" />
+            <e p="Create.cshtml" t="Include" />
+            <e p="Creating.cshtml" t="Include" />
+            <e p="Detail.cshtml" t="Include" />
+            <e p="HistoryDetail.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="PdmCreate.cshtml" t="Include" />
+            <e p="ReviseCreating.cshtml" t="Include" />
+            <e p="ReviseIndex.cshtml" t="Include" />
+          </e>
+          <e p="Seam" t="Include">
+            <e p="ModifyParams.cshtml" t="Include" />
+            <e p="SubmitReport.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+            <e p="Error.cshtml" t="Include" />
+          </e>
+          <e p="Sync" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="SynchroTable" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Task" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="User" t="Include">
+            <e p="Add.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+            <e p="Modify.cshtml" t="Include" />
+            <e p="NowUser.cshtml" t="Include" />
+          </e>
+          <e p="Web.config" t="Include" />
+        </e>
+        <e p="WCAPP.csproj" t="IncludeRecursive" />
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+        <e p="WebService.asmx" t="Include" />
+        <e p="WebService.asmx.cs" t="Include" />
+      </e>
+      <e p="wcapp.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

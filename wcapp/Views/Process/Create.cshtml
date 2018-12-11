@@ -1,0 +1,60 @@
+﻿
+@model WCAPP.Models.ProcessModels.CreateModel
+<div style="border: 1px solid #eee; padding: 0 10px 10px;">
+    <div class="tabbable">
+        <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a style="font-size: 16px" href="#tab1" data-toggle="tab">创建焊接工艺规程</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="content" style="border: none;padding: 20px 60px 20px;">
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <table style="border: none;">
+                            <tr>
+                                <td>
+                                    <span style="width: 100px; display: inline-block;">工艺规程编号</span>@Html.TextBoxFor(m => m.No, new {placeholder = "工艺规程编号"})
+                                    <span>@Html.ValidationMessage("ExistNo", new {style = "font-size:14px;color:red"})</span>
+                                    <span>@Html.ValidationMessageFor(m => m.No, "请输入工艺规程编号", new {style = "font-size:14px;color:red"})</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="width: 100px; display: inline-block">零件号</span>@Html.TextBoxFor(m => m.PartNo, new {placeholder = "零件号"})
+                                    <span>@Html.ValidationMessage("ExistPartNo", new {style = "font-size:14px;color:red"})</span>
+                                    <span>@Html.ValidationMessageFor(m => m.PartNo, "请输入零件号", new {style = "font-size:14px;color:red"})</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span style="width: 100px; display: inline-block">零件名称</span>@Html.TextBoxFor(m => m.PartName, new {placeholder = "零件名称"})
+                                    <span>@Html.ValidationMessageFor(m => m.PartName, "请输入零件名称", new {style = "font-size:14px;color:red"})</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" value="保存并继续" class="btn btn-large btn-primary">
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

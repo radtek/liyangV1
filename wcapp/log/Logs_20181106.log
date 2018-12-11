@@ -1,0 +1,93 @@
+ ----------------------header-------------------------- 2018-11-06 15:38:36,928 [9] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-06 15:38:39,317 [9] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-06 15:38:45,907 [11] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-06 15:38:48,635 [9] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 15:38:50,212 [12] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+2018-11-06 15:38:52,073 [14] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:39:35,559 [15] INFO  log4netlogger - GET http://localhost:54938/Sync?pageSize=200
+2018-11-06 15:39:37,265 [14] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:39:37,771 [10] INFO  log4netlogger - GET http://localhost:54938/Sync?pageNo=1&searchType=&search=&pageSize=200
+2018-11-06 15:39:39,984 [15] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:39:42,330 [10] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=False
+2018-11-06 15:39:54,153 [12] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=True
+2018-11-06 15:39:58,096 [6] INFO  log4netlogger - GET http://localhost:54938/Sync?pageSize=20
+2018-11-06 15:40:31,596 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 15:40:34,368 [13] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:41:46,949 [10] INFO  log4netlogger - GET http://localhost:54938/Sync?pageSize=20
+2018-11-06 15:41:52,208 [17] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 15:41:58,057 [13] INFO  log4netlogger - GET http://localhost:54938/Process?pageSize=20
+2018-11-06 15:42:05,201 [16] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=25,31,32,2,3,4,41,44,40,1,36
+2018-11-06 15:44:17,075 [9] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:44:20,194 [13] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=True
+2018-11-06 15:49:23,801 [21] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=True
+2018-11-06 15:49:24,673 [16] INFO  log4netlogger - GET http://localhost:54938/favicon.ico
+2018-11-06 15:49:29,431 [30] INFO  log4netlogger - GET http://localhost:54938/Sync?pageSize=20
+2018-11-06 15:49:32,496 [19] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=False&pageSize=20
+2018-11-06 15:49:37,113 [19] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=True&pageSize=20
+2018-11-06 15:49:41,360 [21] INFO  log4netlogger - GET http://localhost:54938/Sync?pageSize=200
+2018-11-06 15:49:45,617 [30] INFO  log4netlogger - GET http://localhost:54938/Sync?copPageNo=1&searchType=publish&search=False&pageSize=200
+2018-11-06 15:49:50,258 [30] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:49:50,263 [19] INFO  log4netlogger - GET http://localhost:54938/Sync?pageNo=1&searchType=publish&search=False&pageSize=200
+2018-11-06 15:49:52,231 [29] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:49:54,677 [10] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:49:55,557 [31] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:49:56,686 [20] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:49:57,492 [9] INFO  log4netlogger - POST http://localhost:54938/Sync/ExportWcapp
+2018-11-06 15:50:12,720 [10] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:50:24,454 [37] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-06 15:50:24,722 [19] ERROR log4netlogger -    在 System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   在 System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
+   在 System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
+   在 System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.Odbc.OdbcConnection.Open()
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 30
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-06 15:50:30,949 [29] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-06 15:50:30,952 [29] ERROR log4netlogger -    在 System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   在 System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
+   在 System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
+   在 System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.Odbc.OdbcConnection.Open()
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 30
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+2018-11-06 15:50:50,624 [10] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-06 15:50:50,647 [16] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 15:50:54,304 [31] INFO  log4netlogger - GET http://localhost:54938/Task
+2018-11-06 15:50:55,415 [30] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:50:56,190 [38] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:50:57,605 [32] INFO  log4netlogger - GET http://localhost:54938/Sync
+2018-11-06 15:51:02,728 [29] INFO  log4netlogger - POST http://localhost:54938/Sync/ImportExcel
+2018-11-06 15:51:02,732 [29] ERROR log4netlogger -    在 System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   在 System.Data.Odbc.OdbcConnectionHandle..ctor(OdbcConnection connection, OdbcConnectionString constr, OdbcEnvironmentHandle environmentHandle)
+   在 System.Data.Odbc.OdbcConnectionOpen..ctor(OdbcConnection outerConnection, OdbcConnectionString connectionOptions)
+   在 System.Data.Odbc.OdbcConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningObject)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreateNonPooledConnection(DbConnection owningConnection, DbConnectionPoolGroup poolGroup, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   在 System.Data.Odbc.OdbcConnection.Open()
+   在 WCAPP.Libs.WcappExcel.Import(String path) 位置 D:\liyang\wcapp\WCAPP\Libs\WcappExcel.cs:行号 30
+   在 WCAPP.Controllers.SyncController.ImportExcel(HttpPostedFileBase file) 位置 D:\liyang\wcapp\WCAPP\Controllers\SyncController.cs:行号 118
+ ----------------------header-------------------------- 2018-11-06 16:43:22,098 [5] INFO  log4netlogger - GET http://localhost:54938/
+ ----------------------header-------------------------- 2018-11-06 16:44:29,791 [6] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-06 16:44:37,143 [6] INFO  log4netlogger - POST http://localhost:54938/
+2018-11-06 16:44:39,646 [7] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 16:44:41,558 [9] INFO  log4netlogger - GET http://localhost:54938/Content/process.css
+2018-11-06 16:44:53,272 [6] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=25,31,32,2,3,4,41,44,40,1
+2018-11-06 16:51:27,142 [6] INFO  log4netlogger - GET http://localhost:54938/Process
+2018-11-06 16:51:27,298 [14] INFO  log4netlogger - GET http://localhost:54938/
+2018-11-06 17:04:16,761 [41] INFO  log4netlogger - GET http://localhost:54938/Process/ImportProcesses?processIdes=25,31,32,2,3,4,41,44,40,1
